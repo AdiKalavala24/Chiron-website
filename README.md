@@ -14,10 +14,22 @@ python3 -m http.server 8000
 ## Structure
 
 ```
-index.html            Whole page — all 8 sections, plus the two modals
+index.html            Landing page — 8 sections plus the product-tour modal
+pricing.html          Plans, what's included, waitlist, FAQ
 assets/css/styles.css Design-system CSS on top of Tailwind (shadows, blobs, animations)
-assets/js/main.js     Mobile nav, tabs, grade selector, modals, scroll reveal
+assets/js/main.js     Shared: nav, tabs, grade selector, modals, waitlist, scroll reveal
 ```
+
+Both pages share `styles.css` and `main.js`. Every block in the JS is guarded by an
+existence check, so the same file drives both pages without branching on the URL.
+
+## Commercial facts encoded in the site
+
+Chiron is in **closed beta with no announced release date**, so every trial CTA leads to
+`pricing.html` rather than a signup flow, and the pricing page opens with a beta notice.
+Pricing shown: **$10/month** or **$80/year** (a $40 saving, about $6.67/month), each
+**starting with a 3-month free trial**. If any of those change, they appear in the pricing
+hero, both plan cards, the FAQ, and the final CTA badge on the landing page.
 
 ## Interactive pieces
 
@@ -30,9 +42,12 @@ block count, and reading sentence and words-per-minute.
 The writing card sizes its traced text by measuring it (`fitWritingText`), so any target
 string from `"Aa"` to a full sentence fills the box without hand-tuned font sizes.
 
-**Modals** are driven by data attributes: `data-open="video"` or `data-open="signup"` on any
-button opens the matching `[data-modal]`, and `data-modal-close` closes it. Both trap focus,
-close on Escape and backdrop click, lock body scroll, and restore focus to the trigger.
+**Modals** are driven by data attributes: `data-open="video"` on any button opens the
+matching `[data-modal]`, and `data-modal-close` closes it. Modals trap focus, close on
+Escape and backdrop click, lock body scroll, and restore focus to the trigger.
+
+**Waitlist form** lives on the pricing page (`#waitlist`) and validates the email before
+showing its result state.
 
 ## Design system — "Playful Geometric"
 
@@ -68,14 +83,17 @@ will also remove the last third-party request.
 
 **Still unwired:**
 
-1. `SIGNUP_ENDPOINT` in `assets/js/main.js` is `null`. Until you set it, the trial form
+1. `WAITLIST_ENDPOINT` in `assets/js/main.js` is `null`. Until you set it, the waitlist form
    validates the email but posts nowhere, and says so on screen rather than showing a false
-   confirmation. Set it to your signup API and the real "You're on the list!" state appears.
+   confirmation. Set it to your list API and the real "You're on the list!" state appears.
+   **This is the one blocker for launch** — without it the pricing page collects nothing.
 2. The demo video is a placeholder — there is a commented `<iframe>` in the video modal
    showing where the embed goes.
 3. Four footer links (About, Privacy & Safety, For Educators, Support) still point at `#`
-   because those pages don't exist yet. Every other link and button on the page works.
+   because those pages don't exist yet. Every other link and button works.
 
 **Copy that needs sign-off before launch:** the trust badges ("K–4 Curriculum Aligned",
-"Zero Ads · 100% Kid Safe") and the camera/privacy lines in the Adaptation Engine and final
-CTA sections make specific claims about the product. Confirm each one is accurate.
+"Zero Ads · 100% Kid Safe"), the camera/privacy lines in the Adaptation Engine and pricing
+FAQ, and the trial-billing description ("billing only begins after those three months") all
+make specific claims. Confirm each is accurate — especially the billing language, which is a
+commitment to paying customers.

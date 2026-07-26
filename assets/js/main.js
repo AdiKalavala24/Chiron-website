@@ -320,8 +320,6 @@
       lastFocused = document.activeElement;
     }
 
-    if (name === "signup") resetSignup(modal);
-
     modal.hidden = false;
     openModalEl = modal;
     document.body.classList.add("modal-open");
@@ -368,26 +366,14 @@
   });
 
   /* ---------------------------------------------------------------------
-     Signup form
+     Waitlist form (pricing page)
 
-     TODO: point SIGNUP_ENDPOINT at the real signup API. Until it is set the
-     form validates and shows the confirmation state but sends nothing.
+     Chiron is in closed beta, so this collects interest rather than creating
+     an account. TODO: point WAITLIST_ENDPOINT at the real list. Until it is
+     set the form validates but sends nothing, and says so on screen.
      --------------------------------------------------------------------- */
 
-  var SIGNUP_ENDPOINT = null;
-
-  function resetSignup(modal) {
-    var form = modal.querySelector("[data-signup-form]");
-    var success = modal.querySelector("[data-signup-success]");
-    var error = modal.querySelector("[data-signup-error]");
-    if (!form) return;
-
-    form.hidden = false;
-    form.reset();
-    success.hidden = true;
-    error.classList.add("hidden");
-    error.textContent = "";
-  }
+  var WAITLIST_ENDPOINT = null;
 
   var signupForm = document.querySelector("[data-signup-form]");
 
@@ -417,8 +403,8 @@
       var message = document.querySelector("[data-signup-message]");
       var icon = document.querySelector("[data-signup-icon]");
 
-      if (SIGNUP_ENDPOINT) {
-        fetch(SIGNUP_ENDPOINT, {
+      if (WAITLIST_ENDPOINT) {
+        fetch(WAITLIST_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: value, grade: grade.value }),
@@ -426,15 +412,15 @@
 
         title.textContent = "You're on the list!";
         message.textContent =
-          "Check " + value + " for setup instructions. Chiron will start " + gradeLabel + " and adapt from there.";
+          "We'll email " + value + " as soon as a " + gradeLabel + " spot opens in the beta.";
         icon.classList.remove("bg-sun");
         icon.classList.add("bg-mint");
       } else {
-        // Never tell a real parent they signed up when nothing was recorded.
-        console.warn("Chiron: SIGNUP_ENDPOINT is not set — the signup form is not submitting anywhere yet.");
+        // Never tell a real parent they joined when nothing was recorded.
+        console.warn("Chiron: WAITLIST_ENDPOINT is not set — the waitlist form is not submitting anywhere yet.");
         title.textContent = "Form not connected yet";
         message.textContent =
-          "Nothing was submitted. Set SIGNUP_ENDPOINT in assets/js/main.js to start collecting signups.";
+          "Nothing was submitted. Set WAITLIST_ENDPOINT in assets/js/main.js to start collecting signups.";
         icon.classList.remove("bg-mint");
         icon.classList.add("bg-sun");
       }

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pricing — Chiron</title>
+    <meta
+      name="description"
+      content="Chiron pricing: $10 a month or $80 a year, every plan starting with a 3-month free trial. Chiron is currently in closed beta."
+    />
+    <meta name="theme-color" content="#FFFDF5" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pricing — Chiron" />
+    <meta
+      property="og:description"
+      content="$10 a month or $80 a year, starting with 3 months free. Chiron is currently in closed beta."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%238B5CF6'/%3E%3Cpath d='M16 6l2.6 5.9 6.4.7-4.8 4.3 1.3 6.3L16 20l-5.5 3.2 1.3-6.3L7 12.6l6.4-.7z' fill='%23FFFDF5'/%3E%3C/svg%3E"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: { DEFAULT: "#FFFDF5", deep: "#FDF6E3" },
+              ink: { DEFAULT: "#1E293B", soft: "#475569", light: "#94A3B8" },
+              brand: { DEFAULT: "#8B5CF6", soft: "#EDE9FE", deep: "#6D28D9" },
+              pop: { DEFAULT: "#F472B6", soft: "#FCE7F3" },
+              sun: { DEFAULT: "#FBBF24", soft: "#FEF3C7" },
+              mint: { DEFAULT: "#34D399", soft: "#D1FAE5" },
+            },
+            fontFamily: {
+              display: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              sans: ['"Nunito Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+            boxShadow: {
+              'hard-sm': '2px 2px 0px 0px #1E293B',
+              hard: '4px 4px 0px 0px #1E293B',
+              'hard-lg': '8px 8px 0px 0px #1E293B',
+              'hard-xl': '12px 12px 0px 0px #1E293B',
+              'hard-cream': '4px 4px 0px 0px #FFFDF5',
+              'hard-cream-lg': '8px 8px 0px 0px #FFFDF5',
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+
+  <body class="bg-cream font-sans text-ink antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:border-2 focus:border-ink focus:bg-sun focus:px-5 focus:py-2.5 focus:font-display focus:font-bold focus:shadow-hard"
+      >Skip to content</a
+    >
+
+    <!-- ====================================================================
+         Header
+         ==================================================================== -->
+    <header data-header class="fixed inset-x-0 top-0 z-50 py-3 transition-all duration-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav
+          class="flex items-center justify-between rounded-full border-2 border-ink bg-cream px-3 py-2 shadow-hard sm:px-5"
+          aria-label="Main"
+        >
+          <a href="index.html" class="flex items-center gap-2.5" aria-label="Chiron home">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl border-2 border-ink bg-brand shadow-hard-sm">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="#FFFDF5" aria-hidden="true">
+                <path d="M12 3l2 4.6 5 .5-3.8 3.4 1.1 4.9L12 14l-4.3 2.4 1.1-4.9L5 8.1l5-.5z" />
+              </svg>
+            </span>
+            <span class="font-display text-xl font-extrabold tracking-tight">Chiron</span>
+          </a>
+
+          <ul class="hidden items-center gap-1 lg:flex">
+            <li><a href="index.html#subjects" class="rounded-full px-4 py-2 font-display font-bold text-ink-soft transition hover:bg-brand-soft hover:text-ink">Subjects</a></li>
+            <li><a href="index.html#engine" class="rounded-full px-4 py-2 font-display font-bold text-ink-soft transition hover:bg-brand-soft hover:text-ink">How It Adapts</a></li>
+            <li><a href="index.html#parents" class="rounded-full px-4 py-2 font-display font-bold text-ink-soft transition hover:bg-brand-soft hover:text-ink">For Parents</a></li>
+            <li><a href="pricing.html" aria-current="page" class="rounded-full bg-brand-soft px-4 py-2 font-display font-bold text-ink">Pricing</a></li>
+          </ul>
+
+          <div class="flex items-center gap-2">
+            <a
+              href="#waitlist"
+              class="press hidden rounded-full border-2 border-ink bg-brand px-5 py-2.5 font-display font-bold text-white shadow-hard sm:inline-block"
+              >Join the Waitlist</a
+            >
+
+            <button
+              type="button"
+              data-nav-toggle
+              aria-expanded="false"
+              aria-controls="mobile-nav"
+              class="press grid h-10 w-10 place-items-center rounded-full border-2 border-ink bg-cream shadow-hard-sm lg:hidden"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <svg data-nav-icon="close" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+              <svg data-nav-icon="open" viewBox="0 0 24 24" class="hidden h-5 w-5" fill="none" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </button>
+          </div>
+        </nav>
+
+        <div id="mobile-nav" data-nav-panel hidden class="mt-3 rounded-2xl border-2 border-ink bg-cream p-3 shadow-hard lg:hidden">
+          <ul class="space-y-1">
+            <li><a href="index.html#subjects" class="block rounded-xl px-4 py-3 font-display font-bold hover:bg-brand-soft">Subjects</a></li>
+            <li><a href="index.html#engine" class="block rounded-xl px-4 py-3 font-display font-bold hover:bg-brand-soft">How It Adapts</a></li>
+            <li><a href="index.html#parents" class="block rounded-xl px-4 py-3 font-display font-bold hover:bg-brand-soft">For Parents</a></li>
+            <li><a href="pricing.html" class="block rounded-xl bg-brand-soft px-4 py-3 font-display font-bold">Pricing</a></li>
+            <li class="pt-1">
+              <a href="#waitlist" class="block rounded-full border-2 border-ink bg-brand px-4 py-3 text-center font-display font-bold text-white shadow-hard-sm">Join the Waitlist</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ==================================================================
+           Closed beta status
+           ================================================================== -->
+      <section class="px-4 pt-28 sm:px-6 sm:pt-32 lg:px-8">
+        <div class="mx-auto flex max-w-3xl flex-col items-center gap-3 rounded-2xl border-2 border-ink bg-sun-soft px-5 py-4 text-center shadow-hard sm:flex-row sm:text-left">
+          <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-sun text-lg">🔒</span>
+          <p class="font-semibold">
+            <strong class="font-display font-extrabold">Chiron is in closed beta.</strong>
+            A public release date hasn't been announced yet — the pricing below is what families
+            will pay when we open up.
+            <a href="#waitlist" class="font-display font-extrabold text-brand-deep underline underline-offset-2">Join the waitlist →</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           Pricing hero
+           ================================================================== -->
+      <section class="relative overflow-hidden px-4 pb-16 pt-14 sm:px-6 lg:px-8 lg:pb-20">
+        <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div class="blob -left-24 top-10 h-72 w-72 bg-brand-soft"></div>
+          <div class="blob right-[-6rem] top-24 h-80 w-80 bg-mint-soft" style="animation-delay: -4s"></div>
+          <div class="dots absolute inset-0 text-ink opacity-[0.07]"></div>
+        </div>
+
+        <div class="reveal relative mx-auto max-w-3xl text-center">
+          <span class="inline-block rounded-full border-2 border-ink bg-pop-soft px-4 py-1.5 font-display text-sm font-bold shadow-hard-sm">
+            Pricing
+          </span>
+          <h1 class="mt-6 font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
+            Three months free.<br />Then <span class="marker">$10 a month.</span>
+          </h1>
+          <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl">
+            One low-cost subscription. Every subject, every teaching mode, and 24/7 access for
+            your whole family.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           Plans
+           ================================================================== -->
+      <section class="px-4 pb-20 sm:px-6 lg:px-8" aria-labelledby="plans-heading">
+        <h2 id="plans-heading" class="sr-only">Subscription plans</h2>
+
+        <div class="mx-auto grid max-w-4xl gap-6 md:grid-cols-2 lg:gap-8">
+          <!-- Monthly -->
+          <article class="reveal flex flex-col rounded-[1.75rem] border-2 border-ink bg-white p-7 shadow-hard-lg sm:p-8">
+            <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Monthly</p>
+
+            <p class="mt-4 flex items-end gap-1.5">
+              <span class="font-display text-6xl font-extrabold leading-none">$10</span>
+              <span class="pb-1.5 font-display text-lg font-bold text-ink-soft">/ month</span>
+            </p>
+            <p class="mt-3 font-semibold text-ink-soft">Billed monthly once your free trial ends.</p>
+
+            <div class="mt-6 rounded-2xl border-2 border-ink bg-mint-soft px-4 py-3 text-center font-display font-extrabold">
+              Starts with 3 months free
+            </div>
+
+            <a
+              href="#waitlist"
+              class="press mt-7 rounded-full border-2 border-ink bg-cream px-6 py-4 text-center font-display text-lg font-bold shadow-hard"
+              >Join the Waitlist</a
+            >
+          </article>
+
+          <!-- Yearly -->
+          <article class="reveal relative flex flex-col rounded-[1.75rem] border-2 border-ink bg-brand p-7 text-white shadow-hard-lg sm:p-8" style="--d: 100ms">
+            <span class="absolute -top-4 right-6 rotate-3 rounded-full border-2 border-ink bg-sun px-4 py-1.5 font-display text-sm font-extrabold text-ink shadow-hard-sm">
+              Save $40
+            </span>
+
+            <p class="font-display text-xs font-bold uppercase tracking-widest text-white/70">Yearly</p>
+
+            <p class="mt-4 flex items-end gap-1.5">
+              <span class="font-display text-6xl font-extrabold leading-none">$80</span>
+              <span class="pb-1.5 font-display text-lg font-bold text-white/75">/ year</span>
+            </p>
+            <p class="mt-3 font-semibold text-white/80">
+              Works out to about $6.67 a month — $40 less than paying monthly.
+            </p>
+
+            <div class="mt-6 rounded-2xl border-2 border-cream bg-brand-deep px-4 py-3 text-center font-display font-extrabold">
+              Starts with 3 months free
+            </div>
+
+            <a
+              href="#waitlist"
+              class="press-lg mt-7 rounded-full border-2 border-ink bg-cream px-6 py-4 text-center font-display text-lg font-bold text-ink shadow-hard-lg"
+              >Join the Waitlist</a
+            >
+          </article>
+        </div>
+
+        <p class="reveal mx-auto mt-8 max-w-4xl text-center text-sm font-bold text-ink-soft">
+          Both plans include everything below. No ads, ever.
+        </p>
+      </section>
+
+      <!-- ==================================================================
+           What's included
+           ================================================================== -->
+      <section class="border-y-2 border-ink bg-cream-deep px-4 py-20 sm:px-6 lg:px-8 lg:py-24" aria-labelledby="included-heading">
+        <div class="mx-auto max-w-5xl">
+          <div class="reveal text-center">
+            <h2 id="included-heading" class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Everything is in every plan.
+            </h2>
+            <p class="mt-4 text-lg text-ink-soft">
+              No feature gates, no add-ons, no upsells inside the app.
+            </p>
+          </div>
+
+          <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
+            <li class="reveal flex gap-4 rounded-2xl border-2 border-ink bg-white p-5 shadow-hard">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-brand text-white shadow-hard-sm">📚</span>
+              <div>
+                <p class="font-display font-extrabold">All four subjects, grades K–4</p>
+                <p class="text-sm text-ink-soft">Reading, Writing, Math and Speaking on adaptive learning maps.</p>
+              </div>
+            </li>
+            <li class="reveal flex gap-4 rounded-2xl border-2 border-ink bg-white p-5 shadow-hard" style="--d: 60ms">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-pop text-white shadow-hard-sm">💜</span>
+              <div>
+                <p class="font-display font-extrabold">Real-time affect detection</p>
+                <p class="text-sm text-ink-soft">Chiron notices frustration and switches teaching mode before a meltdown.</p>
+              </div>
+            </li>
+            <li class="reveal flex gap-4 rounded-2xl border-2 border-ink bg-white p-5 shadow-hard" style="--d: 120ms">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-mint text-ink shadow-hard-sm">🎙️</span>
+              <div>
+                <p class="font-display font-extrabold">Voice tutor &amp; Reverse Tutor</p>
+                <p class="text-sm text-ink-soft">Conversational AI tutoring, plus the mode where your child teaches back.</p>
+              </div>
+            </li>
+            <li class="reveal flex gap-4 rounded-2xl border-2 border-ink bg-white p-5 shadow-hard" style="--d: 180ms">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-sun text-ink shadow-hard-sm">🎮</span>
+              <div>
+                <p class="font-display font-extrabold">3D quests &amp; video explainers</p>
+                <p class="text-sm text-ink-soft">Topic-specific game worlds and short explainers woven into each node.</p>
+              </div>
+            </li>
+            <li class="reveal flex gap-4 rounded-2xl border-2 border-ink bg-white p-5 shadow-hard" style="--d: 240ms">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-brand text-white shadow-hard-sm">📈</span>
+              <div>
+                <p class="font-display font-extrabold">Parent portal &amp; debriefs</p>
+                <p class="text-sm text-ink-soft">Counselor-style weekly updates on progress and emotional trajectory.</p>
+              </div>
+            </li>
+            <li class="reveal flex gap-4 rounded-2xl border-2 border-ink bg-white p-5 shadow-hard" style="--d: 300ms">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-pop text-white shadow-hard-sm">🏠</span>
+              <div>
+                <p class="font-display font-extrabold">24/7 access for your family</p>
+                <p class="text-sm text-ink-soft">Learn before school, after dinner, or on a rainy Sunday. No session limits.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           Waitlist
+           ================================================================== -->
+      <section id="waitlist" class="px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div class="reveal mx-auto max-w-2xl rounded-[2rem] border-2 border-ink bg-white p-7 shadow-hard-xl sm:p-10">
+          <div class="text-center">
+            <span class="inline-block rounded-full border-2 border-ink bg-sun px-4 py-1.5 font-display text-sm font-bold shadow-hard-sm">
+              Closed beta
+            </span>
+            <h2 class="mt-5 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Get in line for early access
+            </h2>
+            <p class="mt-4 text-lg text-ink-soft">
+              We're onboarding families gradually while Chiron is in beta. Leave your email and
+              we'll reach out as soon as a spot opens — no release date has been announced yet.
+            </p>
+          </div>
+
+          <form data-signup-form novalidate class="mt-8">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="signup-email" class="block font-display font-bold">Parent email</label>
+                <input
+                  id="signup-email"
+                  name="email"
+                  type="email"
+                  required
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                  aria-describedby="signup-error"
+                  class="mt-2 w-full rounded-2xl border-2 border-ink bg-cream px-4 py-3 font-semibold shadow-hard-sm placeholder:text-ink-light"
+                />
+              </div>
+
+              <div>
+                <label for="signup-grade" class="block font-display font-bold">Your child's grade</label>
+                <select
+                  id="signup-grade"
+                  name="grade"
+                  class="mt-2 w-full rounded-2xl border-2 border-ink bg-cream px-4 py-3 font-semibold shadow-hard-sm"
+                >
+                  <option value="k">Kindergarten</option>
+                  <option value="g1">1st Grade</option>
+                  <option value="g2">2nd Grade</option>
+                  <option value="g3">3rd Grade</option>
+                  <option value="g4">4th Grade</option>
+                </select>
+              </div>
+            </div>
+
+            <p id="signup-error" data-signup-error role="alert" class="mt-3 hidden text-sm font-bold text-pop"></p>
+
+            <button
+              type="submit"
+              class="press-lg mt-7 w-full rounded-full border-2 border-ink bg-brand px-6 py-4 font-display text-lg font-bold text-white shadow-hard-lg"
+            >
+              Join the Waitlist
+            </button>
+
+            <p class="mt-4 text-center text-xs font-bold text-ink-soft">
+              We'll only email you about Chiron. No card required to join the list.
+            </p>
+          </form>
+
+          <div data-signup-success hidden class="py-6 text-center">
+            <span data-signup-icon class="mx-auto grid h-16 w-16 place-items-center rounded-full border-2 border-ink bg-mint shadow-hard">
+              <svg viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="#FFFDF5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <p class="mt-5 font-display text-xl font-extrabold" data-signup-title></p>
+            <p class="mt-2 text-ink-soft" data-signup-message></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           FAQ
+           ================================================================== -->
+      <section class="border-t-2 border-ink bg-cream-deep px-4 py-20 sm:px-6 lg:px-8 lg:py-24" aria-labelledby="faq-heading">
+        <div class="mx-auto max-w-3xl">
+          <h2 id="faq-heading" class="reveal text-center font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Questions parents ask
+          </h2>
+
+          <div class="mt-12 space-y-4">
+            <details class="reveal group rounded-2xl border-2 border-ink bg-white p-5 shadow-hard sm:p-6">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-extrabold">
+                When can we actually start using Chiron?
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 border-ink bg-cream transition group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 leading-relaxed text-ink-soft">
+                Chiron is in closed beta right now, and we haven't announced a public release date.
+                We're adding families in small batches so we can watch how the adaptation engine
+                performs for each child. Join the waitlist and we'll email you when a spot opens.
+              </p>
+            </details>
+
+            <details class="reveal group rounded-2xl border-2 border-ink bg-white p-5 shadow-hard sm:p-6" style="--d: 60ms">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-extrabold">
+                How does the 3-month free trial work?
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 border-ink bg-cream transition group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 leading-relaxed text-ink-soft">
+                Every family starts with three full months of Chiron at no cost — the complete
+                product, not a limited version. Billing only begins after those three months,
+                at whichever plan you chose.
+              </p>
+            </details>
+
+            <details class="reveal group rounded-2xl border-2 border-ink bg-white p-5 shadow-hard sm:p-6" style="--d: 120ms">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-extrabold">
+                What's the difference between monthly and yearly?
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 border-ink bg-cream transition group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 leading-relaxed text-ink-soft">
+                Only the billing cycle and the price. Monthly is $10, which comes to $120 over a
+                year. Yearly is $80 up front, saving you $40 — about $6.67 a month. Both plans
+                unlock exactly the same features.
+              </p>
+            </details>
+
+            <details class="reveal group rounded-2xl border-2 border-ink bg-white p-5 shadow-hard sm:p-6" style="--d: 180ms">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-extrabold">
+                Do I need a credit card to join the waitlist?
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 border-ink bg-cream transition group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 leading-relaxed text-ink-soft">
+                No. Joining the waitlist takes an email address and your child's grade, nothing
+                more. We'll only contact you about Chiron.
+              </p>
+            </details>
+
+            <details class="reveal group rounded-2xl border-2 border-ink bg-white p-5 shadow-hard sm:p-6" style="--d: 240ms">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-extrabold">
+                How does the camera work, and can I turn it off?
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 border-ink bg-cream transition group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 leading-relaxed text-ink-soft">
+                Chiron's affect detection uses the camera to read engagement signals and adjust
+                the lesson in the moment. Camera access is controlled by you from the Parent
+                Portal and can be switched off at any time.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ====================================================================
+         Footer
+         ==================================================================== -->
+    <footer class="border-t-2 border-ink bg-ink py-14 text-cream">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="lg:col-span-2">
+            <div class="flex items-center gap-2.5">
+              <span class="grid h-9 w-9 place-items-center rounded-xl border-2 border-cream bg-brand">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="#FFFDF5" aria-hidden="true">
+                  <path d="M12 3l2 4.6 5 .5-3.8 3.4 1.1 4.9L12 14l-4.3 2.4 1.1-4.9L5 8.1l5-.5z" />
+                </svg>
+              </span>
+              <span class="font-display text-xl font-extrabold">Chiron</span>
+            </div>
+            <p class="mt-4 max-w-sm text-cream/65">
+              The adaptive AI learning companion for grades K–4 — built to meet children where they
+              are, emotionally and academically.
+            </p>
+          </div>
+
+          <div>
+            <p class="font-display text-sm font-bold uppercase tracking-widest text-cream/50">Product</p>
+            <ul class="mt-4 space-y-2.5">
+              <li><a href="index.html#subjects" class="text-cream/75 transition hover:text-sun">Subjects</a></li>
+              <li><a href="index.html#engine" class="text-cream/75 transition hover:text-sun">How It Adapts</a></li>
+              <li><a href="index.html#styles" class="text-cream/75 transition hover:text-sun">Teaching Styles</a></li>
+              <li><a href="pricing.html" class="text-cream/75 transition hover:text-sun">Pricing</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-display text-sm font-bold uppercase tracking-widest text-cream/50">Company</p>
+            <ul class="mt-4 space-y-2.5">
+              <li><a href="#" class="text-cream/75 transition hover:text-sun">About</a></li>
+              <li><a href="#" class="text-cream/75 transition hover:text-sun">Privacy &amp; Safety</a></li>
+              <li><a href="#" class="text-cream/75 transition hover:text-sun">For Educators</a></li>
+              <li><a href="#" class="text-cream/75 transition hover:text-sun">Support</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t-2 border-cream/15 pt-8 sm:flex-row">
+          <p class="text-sm text-cream/60">© <span data-year>2026</span> Chiron. All rights reserved.</p>
+          <p class="text-sm text-cream/60">Made for curious kids and the grown-ups who love them.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
