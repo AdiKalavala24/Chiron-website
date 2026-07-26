@@ -114,11 +114,13 @@
           </ul>
 
           <div class="flex items-center gap-2">
-            <a
-              href="#start"
+            <button
+              type="button"
+              data-open="signup"
               class="press hidden rounded-full border-2 border-ink bg-brand px-5 py-2.5 font-display font-bold text-white shadow-hard sm:inline-block"
-              >Try Chiron Free</a
             >
+              Try Chiron Free
+            </button>
 
             <button
               type="button"
@@ -150,9 +152,10 @@
             <li><a href="#styles" class="block rounded-xl px-4 py-3 font-display font-bold hover:bg-brand-soft">Teaching Styles</a></li>
             <li><a href="#parents" class="block rounded-xl px-4 py-3 font-display font-bold hover:bg-brand-soft">For Parents</a></li>
             <li class="pt-1">
-              <a href="#start" class="block rounded-full border-2 border-ink bg-brand px-4 py-3 text-center font-display font-bold text-white shadow-hard-sm"
-                >Try Chiron Free</a
-              >
+              <button type="button" data-open="signup"
+                class="block w-full rounded-full border-2 border-ink bg-brand px-4 py-3 text-center font-display font-bold text-white shadow-hard-sm">
+                Try Chiron Free
+              </button>
             </li>
           </ul>
         </div>
@@ -192,20 +195,23 @@
             </p>
 
             <div class="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a
-                href="#start"
+              <button
+                type="button"
+                data-open="signup"
                 class="press-lg rounded-full border-2 border-ink bg-brand px-8 py-4 text-center font-display text-lg font-bold text-white shadow-hard-lg"
-                >Try Chiron Free</a
               >
-              <a
-                href="#styles"
+                Try Chiron Free
+              </button>
+              <button
+                type="button"
+                data-open="video"
                 class="press inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-ink bg-cream px-7 py-4 font-display text-lg font-bold shadow-hard"
               >
                 <svg viewBox="0 0 24 24" class="h-5 w-5" fill="#8B5CF6" aria-hidden="true">
                   <path d="M8 5.5v13a1 1 0 001.53.85l10-6.5a1 1 0 000-1.7l-10-6.5A1 1 0 008 5.5z" />
                 </svg>
                 Watch How It Works
-              </a>
+              </button>
             </div>
 
             <dl class="mt-10 grid max-w-lg grid-cols-3">
@@ -365,15 +371,25 @@
             </p>
           </div>
 
-          <!-- Grade selector -->
-          <ul class="reveal mt-10 flex flex-wrap items-center justify-center gap-2.5">
-            <li class="font-display text-sm font-bold uppercase tracking-widest text-ink-light">Pick a tier</li>
-            <li><span class="press inline-block rounded-full border-2 border-ink bg-ink px-4 py-2 font-display text-sm font-bold text-cream shadow-hard-sm">Kindergarten</span></li>
-            <li><span class="press inline-block rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold shadow-hard-sm">1st Grade</span></li>
-            <li><span class="press inline-block rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold shadow-hard-sm">2nd Grade</span></li>
-            <li><span class="press inline-block rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold shadow-hard-sm">3rd Grade</span></li>
-            <li><span class="press inline-block rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold shadow-hard-sm">4th Grade</span></li>
-          </ul>
+          <!-- Grade selector — drives the four subject cards below -->
+          <div
+            data-grades
+            role="radiogroup"
+            aria-label="Choose a grade tier"
+            class="reveal mt-10 flex flex-wrap items-center justify-center gap-2.5"
+          >
+            <span class="font-display text-sm font-bold uppercase tracking-widest text-ink-light">Pick a tier</span>
+            <button type="button" role="radio" aria-checked="true" tabindex="0" data-grade="k"
+              class="press rounded-full border-2 border-ink bg-ink px-4 py-2 font-display text-sm font-bold text-cream shadow-hard-sm">Kindergarten</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" data-grade="g1"
+              class="press rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold text-ink shadow-hard-sm">1st Grade</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" data-grade="g2"
+              class="press rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold text-ink shadow-hard-sm">2nd Grade</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" data-grade="g3"
+              class="press rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold text-ink shadow-hard-sm">3rd Grade</button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" data-grade="g4"
+              class="press rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold text-ink shadow-hard-sm">4th Grade</button>
+          </div>
 
           <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:gap-8">
             <!-- Writing -->
@@ -394,12 +410,17 @@
               </p>
 
               <div class="mt-6 rounded-2xl border-2 border-ink bg-cream p-5">
-                <svg viewBox="0 0 220 80" class="h-20 w-full" fill="none" aria-hidden="true">
-                  <path d="M20 65 L40 15 L60 65 M28 45 H52" stroke="#E2E8F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
-                  <path class="trace-path" d="M20 65 L40 15 L60 65 M28 45 H52" stroke="#8B5CF6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M90 20 v45 M90 42 q22 -22 22 0 v23" stroke="#E2E8F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M140 42 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0" stroke="#E2E8F0" stroke-width="9" stroke-linecap="round" />
-                  <circle cx="60" cy="65" r="7" fill="#F472B6" stroke="#1E293B" stroke-width="2.5" />
+                <p class="mb-3 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-ink-light">
+                  <span class="h-1.5 w-1.5 rounded-full bg-brand"></span>
+                  <span data-slot="writing-node">Letter shapes A–F</span>
+                </p>
+                <svg viewBox="0 0 220 70" class="h-20 w-full" fill="none" aria-hidden="true">
+                  <text data-slot="writing-guide" x="110" y="35" text-anchor="middle" dominant-baseline="central"
+                    font-family="Outfit, sans-serif" font-size="46" font-weight="800" letter-spacing="1"
+                    fill="none" stroke="#E2E8F0" stroke-width="2.5">Aa</text>
+                  <text data-slot="writing-trace" class="trace-fill" x="110" y="35" text-anchor="middle" dominant-baseline="central"
+                    font-family="Outfit, sans-serif" font-size="46" font-weight="800" letter-spacing="1"
+                    fill="none" stroke="#8B5CF6" stroke-width="2.5">Aa</text>
                 </svg>
               </div>
             </article>
@@ -422,18 +443,23 @@
               </p>
 
               <div class="mt-6 rounded-2xl border-2 border-ink bg-cream p-5">
-                <div class="wave flex h-14 items-center justify-center gap-1.5" aria-hidden="true">
-                  <span class="h-10 bg-pop" style="animation-delay: -0.9s"></span>
-                  <span class="h-14 bg-brand" style="animation-delay: -0.7s"></span>
-                  <span class="h-8 bg-pop" style="animation-delay: -0.5s"></span>
-                  <span class="h-14 bg-brand" style="animation-delay: -0.3s"></span>
-                  <span class="h-11 bg-sun" style="animation-delay: -0.15s"></span>
-                  <span class="h-14 bg-brand"></span>
-                  <span class="h-9 bg-pop" style="animation-delay: -0.6s"></span>
-                  <span class="h-12 bg-mint" style="animation-delay: -0.4s"></span>
+                <p class="mb-3 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-ink-light">
+                  <span class="h-1.5 w-1.5 rounded-full bg-pop"></span>
+                  <span data-slot="speaking-node">First sounds</span>
+                </p>
+                <p class="text-center font-display text-2xl font-extrabold" data-slot="speaking-word">sun</p>
+                <div class="wave mt-3 flex h-12 items-center justify-center gap-1.5" aria-hidden="true">
+                  <span class="h-8 bg-pop" style="animation-delay: -0.9s"></span>
+                  <span class="h-12 bg-brand" style="animation-delay: -0.7s"></span>
+                  <span class="h-6 bg-pop" style="animation-delay: -0.5s"></span>
+                  <span class="h-12 bg-brand" style="animation-delay: -0.3s"></span>
+                  <span class="h-9 bg-sun" style="animation-delay: -0.15s"></span>
+                  <span class="h-12 bg-brand"></span>
+                  <span class="h-7 bg-pop" style="animation-delay: -0.6s"></span>
+                  <span class="h-10 bg-mint" style="animation-delay: -0.4s"></span>
                 </div>
-                <p class="mt-3 text-center text-sm font-bold text-ink-soft">
-                  “Nice! Try stretching the <span class="rounded bg-sun px-1">sh</span> a little longer.”
+                <p class="mt-3 text-center text-sm font-bold text-ink-soft" data-slot="speaking-tip">
+                  “Great! Now say it slowly: s — u — n.”
                 </p>
               </div>
             </article>
@@ -457,17 +483,14 @@
               </p>
 
               <div class="mt-6 rounded-2xl border-2 border-ink bg-cream p-5">
-                <div class="grid grid-cols-4 gap-2.5" aria-hidden="true">
-                  <span class="aspect-square rounded-lg border-2 border-ink bg-mint"></span>
-                  <span class="aspect-square rounded-lg border-2 border-ink bg-sun"></span>
-                  <span class="aspect-square rounded-lg border-2 border-ink bg-brand"></span>
-                  <span class="aspect-square rounded-lg border-2 border-dashed border-ink bg-white"></span>
-                  <span class="aspect-square rounded-lg border-2 border-ink bg-pop"></span>
-                  <span class="aspect-square rounded-lg border-2 border-ink bg-mint"></span>
-                  <span class="aspect-square rounded-lg border-2 border-dashed border-ink bg-white"></span>
-                  <span class="aspect-square rounded-lg border-2 border-ink bg-sun"></span>
-                </div>
-                <p class="mt-3 text-center text-sm font-bold text-ink-soft">Build the pattern: 3 + <span class="rounded bg-mint-soft px-1">?</span> = 8</p>
+                <p class="mb-3 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-ink-light">
+                  <span class="h-1.5 w-1.5 rounded-full bg-mint"></span>
+                  <span data-slot="math-node">Counting to 10</span>
+                </p>
+                <div class="grid grid-cols-4 gap-2.5" data-slot="math-blocks" aria-hidden="true"></div>
+                <p class="mt-3 text-center text-sm font-bold text-ink-soft" data-slot="math-prompt">
+                  Count the blocks: 3 + <span class="rounded bg-mint-soft px-1">?</span> = 5
+                </p>
               </div>
             </article>
 
@@ -490,12 +513,17 @@
               </p>
 
               <div class="mt-6 rounded-2xl border-2 border-ink bg-cream p-5">
-                <p class="text-center font-display text-xl font-extrabold leading-loose">
-                  <span class="read-word">The</span> <span class="read-word">brave</span>
-                  <span class="read-word">fox</span> <span class="read-word">found</span>
-                  <span class="read-word">home.</span>
+                <p class="mb-3 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-ink-light">
+                  <span class="h-1.5 w-1.5 rounded-full bg-sun"></span>
+                  <span data-slot="reading-node">Sight words</span>
                 </p>
-                <p class="mt-2 text-center text-sm font-bold text-ink-soft">Reading along · 42 words per minute</p>
+                <p class="text-center font-display text-xl font-extrabold leading-loose" data-slot="reading-line">
+                  <span class="read-word">The</span> <span class="read-word">cat</span>
+                  <span class="read-word">sat.</span>
+                </p>
+                <p class="mt-2 text-center text-sm font-bold text-ink-soft">
+                  Reading along · <span data-slot="reading-wpm">18</span> words per minute
+                </p>
               </div>
             </article>
           </div>
@@ -1087,11 +1115,13 @@
             </p>
 
             <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href="#"
+              <button
+                type="button"
+                data-open="signup"
                 class="press-lg w-full rounded-full border-2 border-ink bg-ink px-9 py-4 font-display text-lg font-bold text-cream shadow-hard-lg sm:w-auto"
-                >Start Your Free Trial Today</a
               >
+                Start Your Free Trial Today
+              </button>
               <a
                 href="#parents"
                 class="press w-full rounded-full border-2 border-ink bg-cream px-8 py-4 font-display text-lg font-bold shadow-hard sm:w-auto"
@@ -1155,6 +1185,125 @@
         </div>
       </div>
     </footer>
+
+    <!-- ====================================================================
+         Modals
+         ==================================================================== -->
+
+    <!-- "Watch How It Works" -->
+    <div class="modal" data-modal="video" role="dialog" aria-modal="true" aria-labelledby="video-title" hidden>
+      <div class="modal-backdrop" data-modal-close></div>
+
+      <div class="modal-card rounded-[2rem] border-2 border-ink bg-cream p-5 shadow-hard-xl sm:p-7">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Product tour</p>
+            <h2 id="video-title" class="mt-1 font-display text-2xl font-extrabold sm:text-3xl">How Chiron Works</h2>
+          </div>
+          <button type="button" data-modal-close aria-label="Close"
+            class="press grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-ink bg-cream shadow-hard-sm">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+
+        <!--
+          TODO: drop the real demo in here, e.g.
+          <iframe class="h-full w-full" src="https://player.vimeo.com/video/ID" title="How Chiron Works"
+                  allow="autoplay; fullscreen" allowfullscreen></iframe>
+        -->
+        <div class="mt-5 grid aspect-video place-items-center rounded-2xl border-2 border-dashed border-ink bg-white text-center">
+          <div class="px-6">
+            <span class="mx-auto grid h-16 w-16 place-items-center rounded-full border-2 border-ink bg-brand shadow-hard">
+              <svg viewBox="0 0 24 24" class="ml-1 h-7 w-7" fill="#FFFDF5" aria-hidden="true">
+                <path d="M8 5.5v13a1 1 0 001.53.85l10-6.5a1 1 0 000-1.7l-10-6.5A1 1 0 008 5.5z" />
+              </svg>
+            </span>
+            <p class="mt-4 font-display text-lg font-extrabold">Demo video goes here</p>
+            <p class="mt-1 text-sm font-semibold text-ink-soft">Replace this placeholder with your embed.</p>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+          <button type="button" data-open="signup"
+            class="press flex-1 rounded-full border-2 border-ink bg-brand px-6 py-3 font-display font-bold text-white shadow-hard">
+            Try Chiron Free
+          </button>
+          <a href="#styles" data-modal-close
+            class="press flex-1 rounded-full border-2 border-ink bg-cream px-6 py-3 text-center font-display font-bold shadow-hard">
+            Explore teaching styles
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Free trial signup -->
+    <div class="modal" data-modal="signup" role="dialog" aria-modal="true" aria-labelledby="signup-title" hidden>
+      <div class="modal-backdrop" data-modal-close></div>
+
+      <div class="modal-card max-w-md rounded-[2rem] border-2 border-ink bg-cream p-6 shadow-hard-xl sm:p-8">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Free to start</p>
+            <h2 id="signup-title" class="mt-1 font-display text-2xl font-extrabold sm:text-3xl">Start your free trial</h2>
+          </div>
+          <button type="button" data-modal-close aria-label="Close"
+            class="press grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-ink bg-cream shadow-hard-sm">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+
+        <form data-signup-form novalidate>
+          <label for="signup-email" class="mt-6 block font-display font-bold">Parent email</label>
+          <input
+            id="signup-email"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            placeholder="you@example.com"
+            aria-describedby="signup-error"
+            class="mt-2 w-full rounded-2xl border-2 border-ink bg-white px-4 py-3 font-semibold shadow-hard-sm placeholder:text-ink-light"
+          />
+          <p id="signup-error" data-signup-error role="alert" class="mt-2 hidden text-sm font-bold text-pop"></p>
+
+          <label for="signup-grade" class="mt-5 block font-display font-bold">Your child's grade</label>
+          <select
+            id="signup-grade"
+            name="grade"
+            class="mt-2 w-full rounded-2xl border-2 border-ink bg-white px-4 py-3 font-semibold shadow-hard-sm"
+          >
+            <option value="k">Kindergarten</option>
+            <option value="g1">1st Grade</option>
+            <option value="g2">2nd Grade</option>
+            <option value="g3">3rd Grade</option>
+            <option value="g4">4th Grade</option>
+          </select>
+
+          <button type="submit"
+            class="press-lg mt-7 w-full rounded-full border-2 border-ink bg-brand px-6 py-4 font-display text-lg font-bold text-white shadow-hard-lg">
+            Create my learner profile
+          </button>
+
+          <p class="mt-4 text-center text-xs font-bold text-ink-soft">
+            No credit card · Zero ads · Cancel anytime
+          </p>
+        </form>
+
+        <div data-signup-success hidden class="py-6 text-center">
+          <span data-signup-icon class="mx-auto grid h-16 w-16 place-items-center rounded-full border-2 border-ink bg-mint shadow-hard">
+            <svg viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="#FFFDF5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </span>
+          <p class="mt-5 font-display text-xl font-extrabold" data-signup-title></p>
+          <p class="mt-2 text-ink-soft" data-signup-message></p>
+        </div>
+      </div>
+    </div>
 
     <script src="assets/js/main.js"></script>
   </body>

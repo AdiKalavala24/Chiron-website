@@ -157,20 +157,19 @@ body {
    Component animations
    -------------------------------------------------------------------------- */
 
-/* Letter-tracing stroke on the Writing card. */
-.trace-path {
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
+/* Letter-tracing stroke on the Writing card. A left-to-right clip wipe works for
+   any target string, unlike a dash offset tuned to one glyph's path length. */
+.trace-fill {
   animation: trace 3.6s ease-in-out infinite;
 }
 
 @keyframes trace {
   0% {
-    stroke-dashoffset: 300;
+    clip-path: inset(0 100% 0 0);
   }
   55%,
   100% {
-    stroke-dashoffset: 0;
+    clip-path: inset(0 0 0 0);
   }
 }
 
@@ -287,6 +286,64 @@ body {
 }
 
 /* --------------------------------------------------------------------------
+   Modals
+   -------------------------------------------------------------------------- */
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 41, 59, 0.62);
+  animation: fade-in 0.2s ease;
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 46rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  animation: modal-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll lock while a modal is open. */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
    Motion & print
    -------------------------------------------------------------------------- */
 
@@ -308,7 +365,7 @@ body {
     transform: none;
   }
 
-  .trace-path {
-    stroke-dashoffset: 0;
+  .trace-fill {
+    clip-path: none;
   }
 }
