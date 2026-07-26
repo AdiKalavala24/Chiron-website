@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chiron — The AI Learning Companion That Adapts to How Your Child Feels</title>
+    <meta
+      name="description"
+      content="Chiron is an adaptive AI tutor for grades K–4. Reading, writing, math and speaking, powered by real-time emotion sensing, 3D game quests and Socratic voice tutors."
+    />
+    <meta name="theme-color" content="#FFFDF5" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Chiron — The AI Learning Companion That Adapts to How Your Child Feels" />
+    <meta
+      property="og:description"
+      content="Grades K–4 reading, writing, math and speaking, powered by real-time emotion sensing, 3D games and Socratic AI tutors."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%238B5CF6'/%3E%3Cpath d='M16 6l2.6 5.9 6.4.7-4.8 4.3 1.3 6.3L16 20l-5.5 3.2 1.3-6.3L7 12.6l6.4-.7z' fill='%23FFFDF5'/%3E%3C/svg%3E"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: { DEFAULT: "#FFFDF5", deep: "#FDF6E3" },
+              ink: { DEFAULT: "#1E293B", soft: "#475569", light: "#94A3B8" },
+              brand: { DEFAULT: "#8B5CF6", soft: "#EDE9FE", deep: "#6D28D9" },
+              pop: { DEFAULT: "#F472B6", soft: "#FCE7F3" },
+              sun: { DEFAULT: "#FBBF24", soft: "#FEF3C7" },
+              mint: { DEFAULT: "#34D399", soft: "#D1FAE5" },
+            },
+            fontFamily: {
+              display: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              sans: ['"Nunito Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+            boxShadow: {
+              'hard-sm': '2px 2px 0px 0px #1E293B',
+              hard: '4px 4px 0px 0px #1E293B',
+              'hard-lg': '8px 8px 0px 0px #1E293B',
+              'hard-xl': '12px 12px 0px 0px #1E293B',
+              'hard-cream': '4px 4px 0px 0px #FFFDF5',
+              'hard-cream-lg': '8px 8px 0px 0px #FFFDF5',
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+
+  <body class="bg-cream font-sans text-ink antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:border-2 focus:border-ink focus:bg-sun focus:px-5 focus:py-2.5 focus:font-display focus:font-bold focus:shadow-hard"
+      >Skip to content</a
+    >
+
+    <!-- ====================================================================
+         Header
+         ==================================================================== -->
+    <header data-header class="fixed inset-x-0 top-0 z-50 py-3 transition-all duration-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav
+          class="flex items-center justify-between rounded-full border-2 border-ink bg-cream px-3 py-2 shadow-hard sm:px-5"
+          aria-label="Main"
+        >
+          <a href="#" class="flex items-center gap-2.5" aria-label="Chiron home">
+            <span
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-xl border-2 border-ink bg-brand shadow-hard-sm"
+            >
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="#FFFDF5" aria-hidden="true">
+                <path d="M12 3l2 4.6 5 .5-3.8 3.4 1.1 4.9L12 14l-4.3 2.4 1.1-4.9L5 8.1l5-.5z" />
+              </svg>
+            </span>
+            <span class="font-display text-xl font-extrabold tracking-tight">Chiron</span>
+          </a>
+
+          <ul class="hidden items-center gap-1 lg:flex">
+            <li>
+              <a href="#subjects" class="rounded-full px-4 py-2 font-display font-bold text-ink-soft transition hover:bg-brand-soft hover:text-ink"
+                >Subjects</a
+              >
+            </li>
+            <li>
+              <a href="#engine" class="rounded-full px-4 py-2 font-display font-bold text-ink-soft transition hover:bg-brand-soft hover:text-ink"
+                >How It Adapts</a
+              >
+            </li>
+            <li>
+              <a href="#styles" class="rounded-full px-4 py-2 font-display font-bold text-ink-soft transition hover:bg-brand-soft hover:text-ink"
+                >Teaching Styles</a
+              >
+            </li>
+            <li>
+              <a href="#parents" class="rounded-full px-4 py-2 font-display font-bold text-ink-soft transition hover:bg-brand-soft hover:text-ink"
+                >For Parents</a
+              >
+            </li>
+          </ul>
+
+          <div class="flex items-center gap-2">
+            <a
+              href="#start"
+              class="press hidden rounded-full border-2 border-ink bg-brand px-5 py-2.5 font-display font-bold text-white shadow-hard sm:inline-block"
+              >Try Chiron Free</a
+            >
+
+            <button
+              type="button"
+              data-nav-toggle
+              aria-expanded="false"
+              aria-controls="mobile-nav"
+              class="press grid h-10 w-10 place-items-center rounded-full border-2 border-ink bg-cream shadow-hard-sm lg:hidden"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <svg data-nav-icon="close" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+              <svg data-nav-icon="open" viewBox="0 0 24 24" class="hidden h-5 w-5" fill="none" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </button>
+          </div>
+        </nav>
+
+        <div
+          id="mobile-nav"
+          data-nav-panel
+          hidden
+          class="mt-3 rounded-2xl border-2 border-ink bg-cream p-3 shadow-hard lg:hidden"
+        >
+          <ul class="space-y-1">
+            <li><a href="#subjects" class="block rounded-xl px-4 py-3 font-display font-bold hover:bg-brand-soft">Subjects</a></li>
+            <li><a href="#engine" class="block rounded-xl px-4 py-3 font-display font-bold hover:bg-brand-soft">How It Adapts</a></li>
+            <li><a href="#styles" class="block rounded-xl px-4 py-3 font-display font-bold hover:bg-brand-soft">Teaching Styles</a></li>
+            <li><a href="#parents" class="block rounded-xl px-4 py-3 font-display font-bold hover:bg-brand-soft">For Parents</a></li>
+            <li class="pt-1">
+              <a href="#start" class="block rounded-full border-2 border-ink bg-brand px-4 py-3 text-center font-display font-bold text-white shadow-hard-sm"
+                >Try Chiron Free</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ==================================================================
+           1. Hero
+           ================================================================== -->
+      <section class="relative overflow-hidden pb-20 pt-32 sm:pt-36 lg:pb-28 lg:pt-44">
+        <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div class="blob -left-24 top-16 h-72 w-72 bg-brand-soft"></div>
+          <div class="blob right-[-6rem] top-40 h-96 w-96 bg-sun-soft" style="animation-delay: -3s"></div>
+          <div class="blob bottom-0 left-1/3 h-64 w-64 bg-mint-soft" style="animation-delay: -6s"></div>
+          <div class="dots absolute inset-0 text-ink opacity-[0.07]"></div>
+        </div>
+
+        <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:px-8">
+          <!-- Copy -->
+          <div class="reveal">
+            <span
+              class="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-mint-soft px-4 py-1.5 font-display text-sm font-bold shadow-hard-sm"
+            >
+              <span class="h-2 w-2 rounded-full bg-mint"></span>
+              Grades K–4 · Adaptive AI Tutor
+            </span>
+
+            <h1 class="mt-6 font-display text-[2.6rem] font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.1rem]">
+              The AI Learning Companion That Adapts to How Your Child
+              <span class="marker">Feels.</span>
+            </h1>
+
+            <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl">
+              Grades K–4 Reading, Writing, Math, and Speaking — powered by real-time emotion sensing,
+              3D games, and Socratic AI tutors.
+            </p>
+
+            <div class="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <a
+                href="#start"
+                class="press-lg rounded-full border-2 border-ink bg-brand px-8 py-4 text-center font-display text-lg font-bold text-white shadow-hard-lg"
+                >Try Chiron Free</a
+              >
+              <a
+                href="#styles"
+                class="press inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-ink bg-cream px-7 py-4 font-display text-lg font-bold shadow-hard"
+              >
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="#8B5CF6" aria-hidden="true">
+                  <path d="M8 5.5v13a1 1 0 001.53.85l10-6.5a1 1 0 000-1.7l-10-6.5A1 1 0 008 5.5z" />
+                </svg>
+                Watch How It Works
+              </a>
+            </div>
+
+            <dl class="mt-10 grid max-w-lg grid-cols-3">
+              <div>
+                <dt class="font-display text-2xl font-extrabold">4</dt>
+                <dd class="text-sm font-semibold text-ink-soft">Core subjects</dd>
+              </div>
+              <div class="border-l-2 border-ink/15 pl-4 sm:pl-8">
+                <dt class="font-display text-2xl font-extrabold">K–4</dt>
+                <dd class="text-sm font-semibold text-ink-soft">Difficulty tiers</dd>
+              </div>
+              <div class="border-l-2 border-ink/15 pl-4 sm:pl-8">
+                <dt class="font-display text-2xl font-extrabold">5</dt>
+                <dd class="text-sm font-semibold text-ink-soft">Teaching modalities</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Product preview -->
+          <div class="reveal relative" style="--d: 120ms">
+            <div class="relative rounded-[2rem] border-2 border-ink bg-white p-5 shadow-hard-xl sm:p-6">
+              <!-- Session header -->
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="grid h-11 w-11 place-items-center rounded-full border-2 border-ink bg-pop font-display text-lg font-extrabold text-white">M</span>
+                  <div>
+                    <p class="font-display font-extrabold leading-tight">Maya</p>
+                    <p class="text-xs font-semibold text-ink-soft">Grade 2 · Reading Map</p>
+                  </div>
+                </div>
+                <span class="flex items-center gap-1.5 rounded-full border-2 border-ink bg-mint-soft px-3 py-1.5 text-xs font-bold shadow-hard-sm">
+                  <span class="h-2 w-2 animate-pulse rounded-full bg-mint"></span>
+                  Focused &amp; Engaged ✨
+                </span>
+              </div>
+
+              <!-- Node path -->
+              <div class="mt-6 rounded-2xl border-2 border-ink bg-cream p-4">
+                <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Learning path</p>
+
+                <ol class="mt-4 space-y-3">
+                  <li class="flex items-center gap-3">
+                    <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border-2 border-ink bg-mint text-white">
+                      <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span class="flex-1 font-display font-bold">Sight Words</span>
+                    <span class="text-xs font-bold text-mint">Complete</span>
+                  </li>
+
+                  <li class="flex items-center gap-3">
+                    <span class="ring-pulse relative grid h-9 w-9 shrink-0 place-items-center rounded-full border-2 border-ink bg-brand font-display text-sm font-extrabold text-white">2</span>
+                    <span class="flex-1 font-display font-bold">Blends &amp; Digraphs</span>
+                    <span class="rounded-full border-2 border-ink bg-sun px-2.5 py-0.5 text-xs font-bold">Now</span>
+                  </li>
+
+                  <li class="flex items-center gap-3 opacity-50">
+                    <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border-2 border-dashed border-ink bg-white">
+                      <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="#1E293B" stroke-width="2.5" aria-hidden="true">
+                        <rect x="5" y="11" width="14" height="9" rx="2" />
+                        <path d="M8 11V8a4 4 0 018 0v3" />
+                      </svg>
+                    </span>
+                    <span class="flex-1 font-display font-bold">Story Time</span>
+                    <span class="text-xs font-bold text-ink-soft">Locked</span>
+                  </li>
+                </ol>
+
+                <div class="mt-5">
+                  <div class="flex items-center justify-between text-xs font-bold text-ink-soft">
+                    <span>Node progress</span>
+                    <span>68%</span>
+                  </div>
+                  <div class="mt-2 h-4 overflow-hidden rounded-full border-2 border-ink bg-white">
+                    <div class="h-full w-[68%] rounded-r-full bg-brand"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reward toast -->
+              <div class="mt-4 flex items-center gap-3 rounded-2xl border-2 border-ink bg-sun-soft p-3.5">
+                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-sun text-lg">🌟</span>
+                <div class="min-w-0">
+                  <p class="font-display text-sm font-extrabold">Node reward unlocked</p>
+                  <p class="truncate text-xs font-semibold text-ink-soft">+3 stars · New companion hat</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating stickers -->
+            <span
+              class="absolute -left-3 top-24 hidden -rotate-6 rounded-2xl border-2 border-ink bg-pop px-3.5 py-2 font-display text-sm font-extrabold text-white shadow-hard sm:block"
+              >Reading · Lvl 4</span
+            >
+            <span
+              class="absolute -bottom-5 right-2 rotate-3 rounded-2xl border-2 border-ink bg-white px-3.5 py-2 font-display text-sm font-extrabold shadow-hard"
+              >🔥 6-day streak</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           2. Trust bar
+           ================================================================== -->
+      <section class="border-y-2 border-ink bg-brand-soft py-12" aria-labelledby="trust-heading">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 id="trust-heading" class="reveal text-center font-display text-xl font-extrabold sm:text-2xl">
+            Loved by Mindful Parents &amp; Early Educators.
+          </h2>
+
+          <ul class="mt-8 flex flex-wrap items-stretch justify-center gap-3 sm:gap-4">
+            <li class="reveal">
+              <span class="flex h-full items-center gap-2.5 rounded-full border-2 border-ink bg-cream px-5 py-3 font-display font-bold shadow-hard">
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 border-ink bg-pop text-xs">💜</span>
+                Emotion-Aware Technology
+              </span>
+            </li>
+            <li class="reveal" style="--d: 80ms">
+              <span class="flex h-full items-center gap-2.5 rounded-full border-2 border-ink bg-cream px-5 py-3 font-display font-bold shadow-hard">
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 border-ink bg-sun text-xs">⏳</span>
+                Screen-Time Conscious
+              </span>
+            </li>
+            <li class="reveal" style="--d: 160ms">
+              <span class="flex h-full items-center gap-2.5 rounded-full border-2 border-ink bg-cream px-5 py-3 font-display font-bold shadow-hard">
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 border-ink bg-mint text-xs">📘</span>
+                K–4 Curriculum Aligned
+              </span>
+            </li>
+            <li class="reveal" style="--d: 240ms">
+              <span class="flex h-full items-center gap-2.5 rounded-full border-2 border-ink bg-cream px-5 py-3 font-display font-bold shadow-hard">
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 border-ink bg-brand text-xs">🛡️</span>
+                Zero Ads · 100% Kid Safe
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           3. Core feature showcase
+           ================================================================== -->
+      <section id="subjects" class="relative py-24 lg:py-32">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="reveal mx-auto max-w-3xl text-center">
+            <span class="inline-block rounded-full border-2 border-ink bg-pop-soft px-4 py-1.5 font-display text-sm font-bold shadow-hard-sm">
+              Four subjects, four ways to learn
+            </span>
+            <h2 class="mt-6 font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+              Every subject gets its own kind of <span class="marker marker-pop">magic.</span>
+            </h2>
+            <p class="mt-5 text-lg text-ink-soft">
+              Reading, Writing, Math, and Speaking each unlock on a sequential learning map. Finish a
+              node, and the next one lights up.
+            </p>
+          </div>
+
+          <!-- Grade selector -->
+          <ul class="reveal mt-10 flex flex-wrap items-center justify-center gap-2.5">
+            <li class="font-display text-sm font-bold uppercase tracking-widest text-ink-light">Pick a tier</li>
+            <li><span class="press inline-block rounded-full border-2 border-ink bg-ink px-4 py-2 font-display text-sm font-bold text-cream shadow-hard-sm">Kindergarten</span></li>
+            <li><span class="press inline-block rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold shadow-hard-sm">1st Grade</span></li>
+            <li><span class="press inline-block rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold shadow-hard-sm">2nd Grade</span></li>
+            <li><span class="press inline-block rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold shadow-hard-sm">3rd Grade</span></li>
+            <li><span class="press inline-block rounded-full border-2 border-ink bg-cream px-4 py-2 font-display text-sm font-bold shadow-hard-sm">4th Grade</span></li>
+          </ul>
+
+          <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:gap-8">
+            <!-- Writing -->
+            <article class="reveal tilt flex flex-col rounded-[1.75rem] border-2 border-ink bg-white p-7 shadow-hard-lg">
+              <div class="flex items-center gap-3">
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border-2 border-ink bg-brand text-white shadow-hard-sm">
+                  <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z" />
+                  </svg>
+                </span>
+                <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Writing</p>
+              </div>
+
+              <h3 class="mt-5 font-display text-2xl font-extrabold">Guided Letter Tracing</h3>
+              <p class="mt-3 flex-1 text-ink-soft">
+                A tactile canvas guides small hands inside stroke paths, connecting letters into whole
+                words with real-time feedback on every curve.
+              </p>
+
+              <div class="mt-6 rounded-2xl border-2 border-ink bg-cream p-5">
+                <svg viewBox="0 0 220 80" class="h-20 w-full" fill="none" aria-hidden="true">
+                  <path d="M20 65 L40 15 L60 65 M28 45 H52" stroke="#E2E8F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+                  <path class="trace-path" d="M20 65 L40 15 L60 65 M28 45 H52" stroke="#8B5CF6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M90 20 v45 M90 42 q22 -22 22 0 v23" stroke="#E2E8F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M140 42 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0" stroke="#E2E8F0" stroke-width="9" stroke-linecap="round" />
+                  <circle cx="60" cy="65" r="7" fill="#F472B6" stroke="#1E293B" stroke-width="2.5" />
+                </svg>
+              </div>
+            </article>
+
+            <!-- Speaking -->
+            <article class="reveal tilt flex flex-col rounded-[1.75rem] border-2 border-ink bg-white p-7 shadow-hard-lg" style="--d: 90ms">
+              <div class="flex items-center gap-3">
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border-2 border-ink bg-pop text-white shadow-hard-sm">
+                  <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="9" y="2" width="6" height="12" rx="3" /><path d="M5 11a7 7 0 0014 0M12 18v4" />
+                  </svg>
+                </span>
+                <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Speaking</p>
+              </div>
+
+              <h3 class="mt-5 font-display text-2xl font-extrabold">AI Pronunciation Guide</h3>
+              <p class="mt-3 flex-1 text-ink-soft">
+                Chiron listens for phonetic accuracy and rhythm, then offers a gentle, actionable tip —
+                never a red buzzer.
+              </p>
+
+              <div class="mt-6 rounded-2xl border-2 border-ink bg-cream p-5">
+                <div class="wave flex h-14 items-center justify-center gap-1.5" aria-hidden="true">
+                  <span class="h-10 bg-pop" style="animation-delay: -0.9s"></span>
+                  <span class="h-14 bg-brand" style="animation-delay: -0.7s"></span>
+                  <span class="h-8 bg-pop" style="animation-delay: -0.5s"></span>
+                  <span class="h-14 bg-brand" style="animation-delay: -0.3s"></span>
+                  <span class="h-11 bg-sun" style="animation-delay: -0.15s"></span>
+                  <span class="h-14 bg-brand"></span>
+                  <span class="h-9 bg-pop" style="animation-delay: -0.6s"></span>
+                  <span class="h-12 bg-mint" style="animation-delay: -0.4s"></span>
+                </div>
+                <p class="mt-3 text-center text-sm font-bold text-ink-soft">
+                  “Nice! Try stretching the <span class="rounded bg-sun px-1">sh</span> a little longer.”
+                </p>
+              </div>
+            </article>
+
+            <!-- Math -->
+            <article class="reveal tilt flex flex-col rounded-[1.75rem] border-2 border-ink bg-white p-7 shadow-hard-lg" style="--d: 180ms">
+              <div class="flex items-center gap-3">
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border-2 border-ink bg-mint text-white shadow-hard-sm">
+                  <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" />
+                    <path d="M14 6.5h7M17.5 3v7M3.5 17.5h7" />
+                  </svg>
+                </span>
+                <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Math &amp; Logic</p>
+              </div>
+
+              <h3 class="mt-5 font-display text-2xl font-extrabold">Interactive 3D Gaming</h3>
+              <p class="mt-3 flex-1 text-ink-soft">
+                Building blocks, geometry puzzles, and live visual counting — spatial logic hidden
+                inside playable game worlds built for replay.
+              </p>
+
+              <div class="mt-6 rounded-2xl border-2 border-ink bg-cream p-5">
+                <div class="grid grid-cols-4 gap-2.5" aria-hidden="true">
+                  <span class="aspect-square rounded-lg border-2 border-ink bg-mint"></span>
+                  <span class="aspect-square rounded-lg border-2 border-ink bg-sun"></span>
+                  <span class="aspect-square rounded-lg border-2 border-ink bg-brand"></span>
+                  <span class="aspect-square rounded-lg border-2 border-dashed border-ink bg-white"></span>
+                  <span class="aspect-square rounded-lg border-2 border-ink bg-pop"></span>
+                  <span class="aspect-square rounded-lg border-2 border-ink bg-mint"></span>
+                  <span class="aspect-square rounded-lg border-2 border-dashed border-ink bg-white"></span>
+                  <span class="aspect-square rounded-lg border-2 border-ink bg-sun"></span>
+                </div>
+                <p class="mt-3 text-center text-sm font-bold text-ink-soft">Build the pattern: 3 + <span class="rounded bg-mint-soft px-1">?</span> = 8</p>
+              </div>
+            </article>
+
+            <!-- Reading -->
+            <article class="reveal tilt flex flex-col rounded-[1.75rem] border-2 border-ink bg-white p-7 shadow-hard-lg" style="--d: 270ms">
+              <div class="flex items-center gap-3">
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border-2 border-ink bg-sun text-ink shadow-hard-sm">
+                  <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 5.5A2.5 2.5 0 015.5 3H10a2 2 0 012 2v14a2 2 0 00-2-2H3z" />
+                    <path d="M21 5.5A2.5 2.5 0 0018.5 3H14a2 2 0 00-2 2v14a2 2 0 012-2h7z" />
+                  </svg>
+                </span>
+                <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Reading</p>
+              </div>
+
+              <h3 class="mt-5 font-display text-2xl font-extrabold">Phonetic Storytelling</h3>
+              <p class="mt-3 flex-1 text-ink-soft">
+                Interactive storybooks highlight each word as it's spoken, aligning audio to sight words
+                so phonics and fluency grow together.
+              </p>
+
+              <div class="mt-6 rounded-2xl border-2 border-ink bg-cream p-5">
+                <p class="text-center font-display text-xl font-extrabold leading-loose">
+                  <span class="read-word">The</span> <span class="read-word">brave</span>
+                  <span class="read-word">fox</span> <span class="read-word">found</span>
+                  <span class="read-word">home.</span>
+                </p>
+                <p class="mt-2 text-center text-sm font-bold text-ink-soft">Reading along · 42 words per minute</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           4. The Magic Engine — affect sensing
+           ================================================================== -->
+      <section id="engine" class="relative overflow-hidden border-y-2 border-ink bg-ink py-24 text-cream lg:py-32">
+        <div class="grid-lines pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="reveal mx-auto max-w-3xl text-center">
+            <span class="inline-block rounded-full border-2 border-cream bg-brand px-4 py-1.5 font-display text-sm font-bold text-white shadow-hard-cream">
+              The Adaptation Engine
+            </span>
+            <h2 class="mt-6 font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+              No More Meltdowns.<br />
+              Only <span class="text-sun">Breakthroughs.</span>
+            </h2>
+            <p class="mt-6 text-lg leading-relaxed text-cream/75">
+              A furrowed brow. Eyes drifting to the window. A third wrong answer in a row. Chiron reads
+              the moment your child is about to check out — and changes the entire lesson before
+              frustration turns into a fight.
+            </p>
+          </div>
+
+          <ol class="mt-16 grid gap-6 lg:grid-cols-3 lg:gap-8">
+            <li class="reveal press-cream rounded-[1.75rem] border-2 border-cream bg-ink p-7 shadow-hard-cream-lg">
+              <div class="flex items-center justify-between">
+                <span class="grid h-12 w-12 place-items-center rounded-2xl border-2 border-cream bg-pop text-white">
+                  <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" /><circle cx="12" cy="12" r="3" />
+                  </svg>
+                </span>
+                <span class="font-display text-5xl font-extrabold text-cream/15">01</span>
+              </div>
+              <h3 class="mt-5 font-display text-2xl font-extrabold">It notices</h3>
+              <p class="mt-3 text-cream/70">
+                The camera quietly reads facial signals — brow furrows, distraction, that distinctive
+                “I hate this” expression — alongside answer speed and accuracy.
+              </p>
+            </li>
+
+            <li class="reveal press-cream rounded-[1.75rem] border-2 border-cream bg-ink p-7 shadow-hard-cream-lg" style="--d: 100ms">
+              <div class="flex items-center justify-between">
+                <span class="grid h-12 w-12 place-items-center rounded-2xl border-2 border-cream bg-sun text-ink">
+                  <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3.5 2" />
+                  </svg>
+                </span>
+                <span class="font-display text-5xl font-extrabold text-cream/15">02</span>
+              </div>
+              <h3 class="mt-5 font-display text-2xl font-extrabold">It waits for the beat</h3>
+              <p class="mt-3 text-cream/70">
+                Chiron never interrupts mid-thought. It lets your child finish the question they're on,
+                then makes its move at a natural seam in the lesson.
+              </p>
+            </li>
+
+            <li class="reveal press-cream rounded-[1.75rem] border-2 border-cream bg-ink p-7 shadow-hard-cream-lg" style="--d: 200ms">
+              <div class="flex items-center justify-between">
+                <span class="grid h-12 w-12 place-items-center rounded-2xl border-2 border-cream bg-mint text-ink">
+                  <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 8h13l-3-3M20 16H7l3 3" />
+                  </svg>
+                </span>
+                <span class="font-display text-5xl font-extrabold text-cream/15">03</span>
+              </div>
+              <h3 class="mt-5 font-display text-2xl font-extrabold">It switches the modality</h3>
+              <p class="mt-3 text-cream/70">
+                The quiz becomes a 3D block quest. Or a Socratic voice chat. Or a stretch break. Same
+                concept, completely different doorway in.
+              </p>
+            </li>
+          </ol>
+
+          <!-- Live switch demo -->
+          <div class="reveal mt-16 overflow-hidden rounded-[1.75rem] border-2 border-cream bg-cream text-ink shadow-hard-cream-lg">
+            <div class="grid gap-0 md:grid-cols-[1fr_auto_1fr]">
+              <div class="p-7 sm:p-9">
+                <span class="inline-block rounded-full border-2 border-ink bg-pop-soft px-3 py-1 font-display text-xs font-bold uppercase tracking-widest">
+                  Minute 11
+                </span>
+                <p class="mt-4 font-display text-xl font-extrabold">Timed multiplication drill</p>
+                <div class="mt-4 flex items-center gap-2.5">
+                  <span class="rounded-lg border-2 border-ink bg-pop-soft px-2.5 py-1 text-sm font-bold">😖 Frustration rising</span>
+                  <span class="rounded-lg border-2 border-ink bg-cream-deep px-2.5 py-1 text-sm font-bold">⏱ Response time 3.4×</span>
+                </div>
+                <p class="mt-4 text-ink-soft">
+                  Three misses in a row. Shoulders drop. In a normal app, this is where the tablet gets
+                  thrown.
+                </p>
+              </div>
+
+              <div class="grid place-items-center border-y-2 border-ink bg-sun px-6 py-4 md:border-x-2 md:border-y-0 md:py-0">
+                <div class="text-center">
+                  <span class="font-display text-xs font-bold uppercase tracking-widest">Chiron switches</span>
+                  <svg viewBox="0 0 24 24" class="mx-auto mt-1 h-8 w-8 rotate-90 md:rotate-0" fill="none" stroke="#1E293B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 12h15M13 6l6 6-6 6" />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="p-7 sm:p-9">
+                <span class="inline-block rounded-full border-2 border-ink bg-mint-soft px-3 py-1 font-display text-xs font-bold uppercase tracking-widest">
+                  Minute 12
+                </span>
+                <p class="mt-4 font-display text-xl font-extrabold">Block Builder: “Make 4 rows of 6”</p>
+                <div class="mt-4 flex items-center gap-2.5">
+                  <span class="rounded-lg border-2 border-ink bg-mint-soft px-2.5 py-1 text-sm font-bold">😄 Re-engaged</span>
+                  <span class="rounded-lg border-2 border-ink bg-cream-deep px-2.5 py-1 text-sm font-bold">🎯 Same skill</span>
+                </div>
+                <p class="mt-4 text-ink-soft">
+                  Identical learning objective, delivered as a 3D build quest. Your child never even
+                  registers it as a rescue.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p class="reveal mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-cream/60">
+            <strong class="font-display text-cream">Built with privacy first.</strong> Affect signals are
+            processed to adjust the lesson in the moment — parents control camera access at any time
+            from the Parent Portal.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           5. Multimodal teaching styles
+           ================================================================== -->
+      <section id="styles" class="relative py-24 lg:py-32">
+        <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div class="blob -right-20 top-24 h-80 w-80 bg-pop-soft"></div>
+          <div class="blob -left-16 bottom-10 h-72 w-72 bg-mint-soft" style="animation-delay: -4s"></div>
+        </div>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="reveal mx-auto max-w-3xl text-center">
+            <span class="inline-block rounded-full border-2 border-ink bg-sun-soft px-4 py-1.5 font-display text-sm font-bold shadow-hard-sm">
+              Multimodal by design
+            </span>
+            <h2 class="mt-6 font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+              Five doorways into the <span class="marker">same idea.</span>
+            </h2>
+            <p class="mt-5 text-lg text-ink-soft">
+              Hardcoded foundational lessons for every grade, plus AI-generated lessons built around
+              whatever your child is obsessed with this month.
+            </p>
+          </div>
+
+          <!-- Tabs -->
+          <div class="mt-12">
+            <div
+              data-tablist
+              role="tablist"
+              aria-label="Teaching styles"
+              class="flex flex-wrap justify-center gap-3"
+            >
+              <button
+                type="button"
+                role="tab"
+                id="tab-reverse"
+                aria-controls="panel-reverse"
+                aria-selected="true"
+                tabindex="0"
+                class="press rounded-full border-2 border-ink bg-ink px-5 py-2.5 font-display font-bold text-cream shadow-hard"
+              >
+                🧠 Socratic Reverse Tutor
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="tab-voice"
+                aria-controls="panel-voice"
+                aria-selected="false"
+                tabindex="-1"
+                class="press rounded-full border-2 border-ink bg-cream px-5 py-2.5 font-display font-bold text-ink shadow-hard-sm"
+              >
+                🎙️ Voice AI Companion
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="tab-quests"
+                aria-controls="panel-quests"
+                aria-selected="false"
+                tabindex="-1"
+                class="press rounded-full border-2 border-ink bg-cream px-5 py-2.5 font-display font-bold text-ink shadow-hard-sm"
+              >
+                🎮 3D Play Quests
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="tab-somatic"
+                aria-controls="panel-somatic"
+                aria-selected="false"
+                tabindex="-1"
+                class="press rounded-full border-2 border-ink bg-cream px-5 py-2.5 font-display font-bold text-ink shadow-hard-sm"
+              >
+                🤸 Physical &amp; Somatic
+              </button>
+            </div>
+
+            <!-- Panel: Reverse tutor -->
+            <div
+              id="panel-reverse"
+              class="tab-panel mt-10 rounded-[2rem] border-2 border-ink bg-white p-7 shadow-hard-xl sm:p-10"
+              role="tabpanel"
+              aria-labelledby="tab-reverse"
+              tabindex="0"
+            >
+              <div class="grid items-center gap-10 lg:grid-cols-2">
+                <div>
+                  <h3 class="font-display text-3xl font-extrabold">Your child becomes the teacher.</h3>
+                  <p class="mt-4 text-lg text-ink-soft">
+                    The Feynman method, built for eight-year-olds. Chiron's companion plays the confused
+                    student, and your child has to explain the concept out loud — the fastest way to turn
+                    “I sort of get it” into real mastery.
+                  </p>
+                  <ul class="mt-6 space-y-3">
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-mint text-[10px] text-white">✓</span>
+                      <span class="font-semibold">Mastery is proven by explanation, not multiple choice</span>
+                    </li>
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-mint text-[10px] text-white">✓</span>
+                      <span class="font-semibold">The companion asks the exact question that exposes the gap</span>
+                    </li>
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-mint text-[10px] text-white">✓</span>
+                      <span class="font-semibold">Builds confidence and vocabulary at the same time</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="rounded-2xl border-2 border-ink bg-cream p-5 sm:p-6">
+                  <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                      <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border-2 border-ink bg-sun text-lg">🐣</span>
+                      <p class="rounded-2xl rounded-tl-sm border-2 border-ink bg-white px-4 py-3 font-semibold shadow-hard-sm">
+                        Wait… why does 3 + 4 make 7? I keep getting 8!
+                      </p>
+                    </div>
+                    <div class="flex flex-row-reverse items-start gap-3">
+                      <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border-2 border-ink bg-pop font-display text-sm font-extrabold text-white">M</span>
+                      <p class="rounded-2xl rounded-tr-sm border-2 border-ink bg-brand px-4 py-3 font-semibold text-white shadow-hard-sm">
+                        You counted the 3 again! Start AT 3, then jump 4 more.
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border-2 border-ink bg-sun text-lg">🐣</span>
+                      <p class="rounded-2xl rounded-tl-sm border-2 border-ink bg-white px-4 py-3 font-semibold shadow-hard-sm">
+                        Ohhh! 4, 5, 6, 7. You're a really good teacher.
+                      </p>
+                    </div>
+                  </div>
+                  <p class="mt-5 text-center text-sm font-bold text-mint">✓ Concept marked as mastered</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel: Voice -->
+            <div
+              id="panel-voice"
+              class="tab-panel mt-10 rounded-[2rem] border-2 border-ink bg-white p-7 shadow-hard-xl sm:p-10"
+              role="tabpanel"
+              aria-labelledby="tab-voice"
+              tabindex="0"
+              hidden
+            >
+              <div class="grid items-center gap-10 lg:grid-cols-2">
+                <div>
+                  <h3 class="font-display text-3xl font-extrabold">A tutor that talks back.</h3>
+                  <p class="mt-4 text-lg text-ink-soft">
+                    A real conversational voice tutor that walks your child through the hard part
+                    step-by-step, at their pace, without a hint of impatience — even on the ninth
+                    “but why?”
+                  </p>
+                  <ul class="mt-6 space-y-3">
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-brand text-[10px] text-white">✓</span>
+                      <span class="font-semibold">Natural back-and-forth speech, no typing required</span>
+                    </li>
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-brand text-[10px] text-white">✓</span>
+                      <span class="font-semibold">Breaks a stuck problem into one small step at a time</span>
+                    </li>
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-brand text-[10px] text-white">✓</span>
+                      <span class="font-semibold">Doubles as reading and speaking practice</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="rounded-2xl border-2 border-ink bg-cream p-6">
+                  <div class="flex items-center gap-3">
+                    <span class="grid h-12 w-12 place-items-center rounded-full border-2 border-ink bg-brand text-white shadow-hard-sm">
+                      <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+                        <rect x="9" y="2" width="6" height="12" rx="3" /><path d="M5 11a7 7 0 0014 0M12 18v4" />
+                      </svg>
+                    </span>
+                    <div>
+                      <p class="font-display font-extrabold">Chiron is listening…</p>
+                      <p class="text-sm font-semibold text-ink-soft">Topic: why fractions are fair shares</p>
+                    </div>
+                  </div>
+
+                  <div class="wave mt-6 flex h-16 items-center justify-center gap-1.5" aria-hidden="true">
+                    <span class="h-8 bg-brand" style="animation-delay: -0.8s"></span>
+                    <span class="h-14 bg-brand" style="animation-delay: -0.6s"></span>
+                    <span class="h-16 bg-pop" style="animation-delay: -0.4s"></span>
+                    <span class="h-10 bg-brand" style="animation-delay: -0.2s"></span>
+                    <span class="h-16 bg-sun"></span>
+                    <span class="h-12 bg-brand" style="animation-delay: -0.5s"></span>
+                    <span class="h-14 bg-mint" style="animation-delay: -0.3s"></span>
+                    <span class="h-9 bg-brand" style="animation-delay: -0.7s"></span>
+                  </div>
+
+                  <p class="mt-6 rounded-2xl border-2 border-ink bg-white px-4 py-3 font-semibold shadow-hard-sm">
+                    “Okay — if we cut this pizza for you and your brother, how many pieces do we need so
+                    it's fair?”
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel: Quests -->
+            <div
+              id="panel-quests"
+              class="tab-panel mt-10 rounded-[2rem] border-2 border-ink bg-white p-7 shadow-hard-xl sm:p-10"
+              role="tabpanel"
+              aria-labelledby="tab-quests"
+              tabindex="0"
+              hidden
+            >
+              <div class="grid items-center gap-10 lg:grid-cols-2">
+                <div>
+                  <h3 class="font-display text-3xl font-extrabold">Learning hidden inside the fun.</h3>
+                  <p class="mt-4 text-lg text-ink-soft">
+                    Curated 3D games built around real core loops, so they hold up to the tenth replay —
+                    each one engineered around a specific concept rather than bolted on as a reward.
+                  </p>
+                  <ul class="mt-6 space-y-3">
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-sun text-[10px] text-ink">✓</span>
+                      <span class="font-semibold">Topic-specific worlds, not generic point collection</span>
+                    </li>
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-sun text-[10px] text-ink">✓</span>
+                      <span class="font-semibold">Short video explainers woven directly into the nodes</span>
+                    </li>
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-sun text-[10px] text-ink">✓</span>
+                      <span class="font-semibold">Difficulty scales live with flow-state pacing</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="rounded-2xl border-2 border-ink bg-ink p-5">
+                  <div class="flex items-center justify-between text-cream">
+                    <span class="rounded-full border-2 border-cream px-3 py-1 font-display text-xs font-bold">QUEST · Geometry Grove</span>
+                    <span class="font-display text-sm font-bold">⭐ 2 / 3</span>
+                  </div>
+
+                  <div class="mt-4 grid grid-cols-3 gap-2.5" aria-hidden="true">
+                    <span class="aspect-square rounded-xl border-2 border-cream bg-brand"></span>
+                    <span class="aspect-square rounded-xl border-2 border-cream bg-mint"></span>
+                    <span class="aspect-square rounded-xl border-2 border-cream bg-sun"></span>
+                    <span class="aspect-square rounded-xl border-2 border-cream bg-sun"></span>
+                    <span class="aspect-square rounded-xl border-2 border-dashed border-cream/60"></span>
+                    <span class="aspect-square rounded-xl border-2 border-cream bg-pop"></span>
+                    <span class="aspect-square rounded-xl border-2 border-cream bg-mint"></span>
+                    <span class="aspect-square rounded-xl border-2 border-cream bg-brand"></span>
+                    <span class="aspect-square rounded-xl border-2 border-dashed border-cream/60"></span>
+                  </div>
+
+                  <p class="mt-4 rounded-xl border-2 border-cream bg-cream px-4 py-3 text-center font-display font-extrabold">
+                    Place 2 more blocks to finish the rectangle 🧱
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel: Somatic -->
+            <div
+              id="panel-somatic"
+              class="tab-panel mt-10 rounded-[2rem] border-2 border-ink bg-white p-7 shadow-hard-xl sm:p-10"
+              role="tabpanel"
+              aria-labelledby="tab-somatic"
+              tabindex="0"
+              hidden
+            >
+              <div class="grid items-center gap-10 lg:grid-cols-2">
+                <div>
+                  <h3 class="font-display text-3xl font-extrabold">For the kid who cannot sit still.</h3>
+                  <p class="mt-4 text-lg text-ink-soft">
+                    Movement primers turn the body into the answer sheet — make a 90° angle with your
+                    arms, stomp out a syllable count, stretch between rounds. High-energy kids stop
+                    fighting the lesson and start using it.
+                  </p>
+                  <ul class="mt-6 space-y-3">
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-pop text-[10px] text-white">✓</span>
+                      <span class="font-semibold">Active games that reset attention without ending the session</span>
+                    </li>
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-pop text-[10px] text-white">✓</span>
+                      <span class="font-semibold">Desk-mounted camera brings real blocks and flashcards into play</span>
+                    </li>
+                    <li class="flex gap-3">
+                      <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-pop text-[10px] text-white">✓</span>
+                      <span class="font-semibold">Physical objects, drawings and paper worksheets all count</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="rounded-2xl border-2 border-ink bg-cream p-6">
+                  <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Somatic primer</p>
+                  <p class="mt-3 font-display text-2xl font-extrabold">Make a right angle with your arms!</p>
+
+                  <div class="mt-6 grid place-items-center rounded-2xl border-2 border-dashed border-ink bg-white py-8">
+                    <svg viewBox="0 0 120 90" class="h-28 w-40" fill="none" aria-hidden="true">
+                      <circle cx="60" cy="20" r="11" fill="#FBBF24" stroke="#1E293B" stroke-width="3" />
+                      <path d="M60 31 v34" stroke="#1E293B" stroke-width="4" stroke-linecap="round" />
+                      <path d="M60 40 H26" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round" />
+                      <path d="M60 40 V8" stroke="#34D399" stroke-width="6" stroke-linecap="round" />
+                      <path d="M50 40 v-10 h10" stroke="#F472B6" stroke-width="3" />
+                      <path d="M60 65 l-14 20M60 65 l14 20" stroke="#1E293B" stroke-width="4" stroke-linecap="round" />
+                    </svg>
+                  </div>
+
+                  <p class="mt-5 rounded-xl border-2 border-ink bg-mint-soft px-4 py-3 text-center font-display font-extrabold">
+                    Perfect 90° — that's a right angle! 🎉
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           6. Parent intelligence portal
+           ================================================================== -->
+      <section id="parents" class="relative border-y-2 border-ink bg-cream-deep py-24 lg:py-32">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
+            <div class="reveal">
+              <span class="inline-block rounded-full border-2 border-ink bg-white px-4 py-1.5 font-display text-sm font-bold shadow-hard-sm">
+                Parent Portal
+              </span>
+              <h2 class="mt-6 font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+                Updates that read like a helpful counselor, not a
+                <span class="marker marker-pop">spreadsheet.</span>
+              </h2>
+              <p class="mt-6 text-lg leading-relaxed text-ink-soft">
+                You don't need another dashboard of percentages. You need to know what actually happened
+                in your child's head today — where they lit up, where they struggled, and exactly what to
+                try at the kitchen table tonight.
+              </p>
+
+              <ul class="mt-8 space-y-4">
+                <li class="flex gap-4">
+                  <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-brand text-white shadow-hard-sm">📈</span>
+                  <div>
+                    <p class="font-display font-extrabold">Emotional trajectory, not just scores</p>
+                    <p class="text-ink-soft">See confidence build or dip across a week, subject by subject.</p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-mint text-ink shadow-hard-sm">🏆</span>
+                  <div>
+                    <p class="font-display font-extrabold">Focus wins worth celebrating</p>
+                    <p class="text-ink-soft">The small breakthroughs that never show up on a report card.</p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-2 border-ink bg-sun text-ink shadow-hard-sm">🏠</span>
+                  <div>
+                    <p class="font-display font-extrabold">One concrete thing to try at home</p>
+                    <p class="text-ink-soft">Action-oriented debriefs, written in plain language.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Debrief card -->
+            <div class="reveal" style="--d: 120ms">
+              <article class="rotate-1 rounded-[2rem] border-2 border-ink bg-white p-7 shadow-hard-xl sm:p-8">
+                <div class="flex items-center justify-between border-b-2 border-dashed border-ink/25 pb-5">
+                  <div>
+                    <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Weekly debrief</p>
+                    <p class="mt-1 font-display text-xl font-extrabold">Maya · Grade 2</p>
+                  </div>
+                  <span class="rounded-full border-2 border-ink bg-mint-soft px-3 py-1.5 text-xs font-bold">Mon – Fri</span>
+                </div>
+
+                <p class="mt-5 leading-relaxed text-ink-soft">
+                  <span class="font-display font-extrabold text-ink">Maya lit up during phonics this week</span> —
+                  she asked to re-read the fox story three times and taught the whole plot back to her
+                  companion without a single prompt.
+                </p>
+                <p class="mt-3 leading-relaxed text-ink-soft">
+                  Timed math was harder. She needed a break on Wednesday, so we moved her into Block
+                  Builder and she finished the same objective in seven minutes, smiling.
+                </p>
+
+                <!-- Mood trajectory -->
+                <div class="mt-6 rounded-2xl border-2 border-ink bg-cream p-5">
+                  <div class="flex items-center justify-between">
+                    <p class="font-display text-xs font-bold uppercase tracking-widest text-ink-light">Emotional trajectory</p>
+                    <span class="text-xs font-bold text-mint">Trending up</span>
+                  </div>
+
+                  <svg viewBox="-8 -8 276 96" class="mt-3 h-20 w-full" fill="none" aria-hidden="true">
+                    <path d="M0 60 L52 44 L104 62 L156 30 L208 22 L260 14" stroke="#8B5CF6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="52" cy="44" r="5" fill="#FFFDF5" stroke="#1E293B" stroke-width="2.5" />
+                    <circle cx="104" cy="62" r="5" fill="#F472B6" stroke="#1E293B" stroke-width="2.5" />
+                    <circle cx="156" cy="30" r="5" fill="#FFFDF5" stroke="#1E293B" stroke-width="2.5" />
+                    <circle cx="208" cy="22" r="5" fill="#FFFDF5" stroke="#1E293B" stroke-width="2.5" />
+                    <circle cx="260" cy="14" r="5" fill="#34D399" stroke="#1E293B" stroke-width="2.5" />
+                  </svg>
+
+                  <div class="flex justify-between text-xs font-bold text-ink-light">
+                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span>
+                  </div>
+                </div>
+
+                <div class="mt-5 rounded-2xl border-2 border-ink bg-sun-soft p-5">
+                  <p class="font-display text-sm font-extrabold">💡 Try this at home</p>
+                  <p class="mt-2 text-sm leading-relaxed text-ink-soft">
+                    Let Maya be the teacher for five minutes after dinner. Ask her to explain how she
+                    “makes ten” — she's proud of it, and saying it out loud will lock it in.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           7. Roadmap marquee
+           ================================================================== -->
+      <section class="overflow-hidden border-b-2 border-ink bg-white py-10" aria-labelledby="roadmap-heading">
+        <h2 id="roadmap-heading" class="text-center font-display text-xs font-bold uppercase tracking-[0.25em] text-ink-light">
+          Coming next to Chiron
+        </h2>
+
+        <div class="marquee-mask mt-6" aria-hidden="true">
+          <div class="marquee-track gap-4">
+            <span class="flex shrink-0 items-center gap-2.5 rounded-full border-2 border-ink bg-brand-soft px-5 py-2.5 font-display font-bold">🔍 Tangible Desktop Tutor</span>
+            <span class="flex shrink-0 items-center gap-2.5 rounded-full border-2 border-ink bg-mint-soft px-5 py-2.5 font-display font-bold">🧱 Roblox &amp; Minecraft Companion</span>
+            <span class="flex shrink-0 items-center gap-2.5 rounded-full border-2 border-ink bg-sun-soft px-5 py-2.5 font-display font-bold">💰 Micro-Economy &amp; Allowance Math</span>
+            <span class="flex shrink-0 items-center gap-2.5 rounded-full border-2 border-ink bg-pop-soft px-5 py-2.5 font-display font-bold">🤸 Somatic Movement Primers</span>
+            <span class="flex shrink-0 items-center gap-2.5 rounded-full border-2 border-ink bg-cream-deep px-5 py-2.5 font-display font-bold">🎬 Curated Video Explainers</span>
+            <span class="flex shrink-0 items-center gap-2.5 rounded-full border-2 border-ink bg-brand-soft px-5 py-2.5 font-display font-bold">🔍 Tangible Desktop Tutor</span>
+            <span class="flex shrink-0 items-center gap-2.5 rounded-full border-2 border-ink bg-mint-soft px-5 py-2.5 font-display font-bold">🧱 Roblox &amp; Minecraft Companion</span>
+            <span class="flex shrink-0 items-center gap-2.5 rounded-full border-2 border-ink bg-sun-soft px-5 py-2.5 font-display font-bold">💰 Micro-Economy &amp; Allowance Math</span>
+            <span class="flex shrink-0 items-center gap-2.5 rounded-full border-2 border-ink bg-pop-soft px-5 py-2.5 font-display font-bold">🤸 Somatic Movement Primers</span>
+            <span class="flex shrink-0 items-center gap-2.5 rounded-full border-2 border-ink bg-cream-deep px-5 py-2.5 font-display font-bold">🎬 Curated Video Explainers</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           8. Final CTA
+           ================================================================== -->
+      <section id="start" class="px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+        <div class="reveal relative mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] border-2 border-ink bg-sun px-6 py-16 text-center shadow-hard-xl sm:px-12 sm:py-20">
+          <div class="dots pointer-events-none absolute inset-0 text-ink opacity-10" aria-hidden="true"></div>
+
+          <div class="relative">
+            <span class="inline-block rounded-full border-2 border-ink bg-cream px-4 py-1.5 font-display text-sm font-bold shadow-hard-sm">
+              Free to start · No credit card
+            </span>
+
+            <h2 class="mx-auto mt-6 max-w-3xl font-display text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.5rem]">
+              Ready to Give Your Child a Tutor That Truly Understands Them?
+            </h2>
+
+            <p class="mx-auto mt-6 max-w-xl text-lg font-semibold text-ink/75">
+              Set up a learner profile in under two minutes. Chiron figures out the rest — one node, one
+              feeling, one breakthrough at a time.
+            </p>
+
+            <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href="#"
+                class="press-lg w-full rounded-full border-2 border-ink bg-ink px-9 py-4 font-display text-lg font-bold text-cream shadow-hard-lg sm:w-auto"
+                >Start Your Free Trial Today</a
+              >
+              <a
+                href="#parents"
+                class="press w-full rounded-full border-2 border-ink bg-cream px-8 py-4 font-display text-lg font-bold shadow-hard sm:w-auto"
+                >See a Parent Debrief</a
+              >
+            </div>
+
+            <p class="mt-8 text-sm font-bold text-ink/70">
+              Zero ads · Cancel anytime · Camera features are always parent-controlled
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ====================================================================
+         Footer
+         ==================================================================== -->
+    <footer class="border-t-2 border-ink bg-ink py-14 text-cream">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="lg:col-span-2">
+            <div class="flex items-center gap-2.5">
+              <span class="grid h-9 w-9 place-items-center rounded-xl border-2 border-cream bg-brand">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="#FFFDF5" aria-hidden="true">
+                  <path d="M12 3l2 4.6 5 .5-3.8 3.4 1.1 4.9L12 14l-4.3 2.4 1.1-4.9L5 8.1l5-.5z" />
+                </svg>
+              </span>
+              <span class="font-display text-xl font-extrabold">Chiron</span>
+            </div>
+            <p class="mt-4 max-w-sm text-cream/65">
+              The adaptive AI learning companion for grades K–4 — built to meet children where they
+              are, emotionally and academically.
+            </p>
+          </div>
+
+          <div>
+            <p class="font-display text-sm font-bold uppercase tracking-widest text-cream/50">Product</p>
+            <ul class="mt-4 space-y-2.5">
+              <li><a href="#subjects" class="text-cream/75 transition hover:text-sun">Subjects</a></li>
+              <li><a href="#engine" class="text-cream/75 transition hover:text-sun">How It Adapts</a></li>
+              <li><a href="#styles" class="text-cream/75 transition hover:text-sun">Teaching Styles</a></li>
+              <li><a href="#parents" class="text-cream/75 transition hover:text-sun">Parent Portal</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-display text-sm font-bold uppercase tracking-widest text-cream/50">Company</p>
+            <ul class="mt-4 space-y-2.5">
+              <li><a href="#" class="text-cream/75 transition hover:text-sun">About</a></li>
+              <li><a href="#" class="text-cream/75 transition hover:text-sun">Privacy &amp; Safety</a></li>
+              <li><a href="#" class="text-cream/75 transition hover:text-sun">For Educators</a></li>
+              <li><a href="#" class="text-cream/75 transition hover:text-sun">Support</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t-2 border-cream/15 pt-8 sm:flex-row">
+          <p class="text-sm text-cream/60">© <span data-year>2026</span> Chiron. All rights reserved.</p>
+          <p class="text-sm text-cream/60">Made for curious kids and the grown-ups who love them.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
