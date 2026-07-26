@@ -366,67 +366,109 @@
   });
 
   /* ---------------------------------------------------------------------
-     Waitlist form (pricing page)
+     Waitlist form (pricing page) — posts to Formspree over AJAX.
 
      Chiron is in closed beta, so this collects interest rather than creating
-     an account. TODO: point WAITLIST_ENDPOINT at the real list. Until it is
-     set the form validates but sends nothing, and says so on screen.
-     --------------------------------------------------------------------- */
+     an account. The endpoint lives in the form's action attribute so the
+     no-JavaScript path posts to the same place.
 
-  var WAITLIST_ENDPOINT = null;
+     The success panel only appears once Formspree confirms the submission.
+     Formspree can reject a post (monthly quota, spam filter, disabled form),
+     and telling a parent they joined a waitlist they are not on would be worse
+     than showing an error.
+     --------------------------------------------------------------------- */
 
   var signupForm = document.querySelector("[data-signup-form]");
 
   if (signupForm) {
+    // Native validation covers the no-JS path; once we're running, our own
+    // inline messages replace the browser's bubbles.
+    signupForm.noValidate = true;
+
+    var submitBtn = signupForm.querySelector("[data-signup-submit]");
+    var submitLabel = signupForm.querySelector("[data-signup-submit-label]");
+    var idleLabel = submitLabel ? submitLabel.textContent : "";
+    var errorBox = document.querySelector("[data-signup-error]");
+
+    var showError = function (text, field) {
+      errorBox.textContent = text;
+      errorBox.classList.remove("hidden");
+      if (field) {
+        field.setAttribute("aria-invalid", "true");
+        field.focus();
+      }
+    };
+
+    var clearError = function () {
+      errorBox.classList.add("hidden");
+      errorBox.textContent = "";
+      signupForm.elements.email.removeAttribute("aria-invalid");
+    };
+
+    var setSubmitting = function (busy) {
+      if (submitBtn) submitBtn.disabled = busy;
+      if (submitLabel) submitLabel.textContent = busy ? "Joining…" : idleLabel;
+      signupForm.setAttribute("aria-busy", String(busy));
+    };
+
+    // Formspree returns { errors: [{ field, message }] } on rejection.
+    var describeFailure = function (data) {
+      var errors = data && data.errors;
+      if (Array.isArray(errors) && errors.length) {
+        var text = errors
+          .map(function (e) { return e && e.message; })
+          .filter(Boolean)
+          .join(" ");
+        if (text) return text;
+      }
+      return "We couldn't add you to the list just now. Please try again in a moment.";
+    };
+
     signupForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
       var email = signupForm.elements.email;
-      var error = document.querySelector("[data-signup-error]");
       var value = email.value.trim();
 
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        error.textContent = "Please enter a valid email address.";
-        error.classList.remove("hidden");
-        email.setAttribute("aria-invalid", "true");
-        email.focus();
+        showError("Please enter a valid email address.", email);
         return;
       }
 
-      error.classList.add("hidden");
-      email.removeAttribute("aria-invalid");
+      clearError();
+      setSubmitting(true);
 
-      var grade = signupForm.elements.grade;
-      var gradeLabel = grade.options[grade.selectedIndex].textContent;
+      var gradeLabel = signupForm.elements.grade.value;
 
-      var title = document.querySelector("[data-signup-title]");
-      var message = document.querySelector("[data-signup-message]");
-      var icon = document.querySelector("[data-signup-icon]");
-
-      if (WAITLIST_ENDPOINT) {
-        fetch(WAITLIST_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: value, grade: grade.value }),
-        }).catch(function () {});
-
-        title.textContent = "You're on the list!";
-        message.textContent =
-          "We'll email " + value + " as soon as a " + gradeLabel + " spot opens in the beta.";
-        icon.classList.remove("bg-sun");
-        icon.classList.add("bg-mint");
-      } else {
-        // Never tell a real parent they joined when nothing was recorded.
-        console.warn("Chiron: WAITLIST_ENDPOINT is not set — the waitlist form is not submitting anywhere yet.");
-        title.textContent = "Form not connected yet";
-        message.textContent =
-          "Nothing was submitted. Set WAITLIST_ENDPOINT in assets/js/main.js to start collecting signups.";
-        icon.classList.remove("bg-mint");
-        icon.classList.add("bg-sun");
-      }
-
-      signupForm.hidden = true;
-      document.querySelector("[data-signup-success]").hidden = false;
+      fetch(signupForm.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(signupForm),
+      })
+        .then(function (response) {
+          return response
+            .json()
+            .catch(function () { return {}; })
+            .then(function (data) {
+              if (!response.ok) throw new Error(describeFailure(data));
+              return data;
+            });
+        })
+        .then(function () {
+          document.querySelector("[data-signup-title]").textContent = "You're on the list!";
+          document.querySelector("[data-signup-message]").textContent =
+            "We'll email " + value + " as soon as a " + gradeLabel + " spot opens in the beta.";
+          signupForm.hidden = true;
+          document.querySelector("[data-signup-success]").hidden = false;
+        })
+        .catch(function (err) {
+          setSubmitting(false);
+          showError(
+            err && err.message
+              ? err.message
+              : "We couldn't reach the server. Check your connection and try again."
+          );
+        });
     });
   }
 

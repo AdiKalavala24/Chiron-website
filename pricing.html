@@ -314,7 +314,23 @@
             </p>
           </div>
 
-          <form data-signup-form novalidate class="mt-8">
+          <!-- Posts via AJAX so the success panel renders in place. The action/method
+               are real so the form still works if the JavaScript never loads. -->
+          <form
+            data-signup-form
+            action="https://formspree.io/f/xykrlwzq"
+            method="POST"
+            class="mt-8"
+          >
+            <input type="hidden" name="_subject" value="New Chiron waitlist signup" />
+
+            <!-- Honeypot: hidden from people, catnip for bots. -->
+            <div class="hidden" aria-hidden="true">
+              <label>
+                Leave this field empty
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
             <div class="grid gap-5 sm:grid-cols-2">
               <div>
                 <label for="signup-email" class="block font-display font-bold">Parent email</label>
@@ -337,11 +353,11 @@
                   name="grade"
                   class="mt-2 w-full rounded-2xl border-2 border-ink bg-cream px-4 py-3 font-semibold shadow-hard-sm"
                 >
-                  <option value="k">Kindergarten</option>
-                  <option value="g1">1st Grade</option>
-                  <option value="g2">2nd Grade</option>
-                  <option value="g3">3rd Grade</option>
-                  <option value="g4">4th Grade</option>
+                  <option value="Kindergarten">Kindergarten</option>
+                  <option value="1st Grade">1st Grade</option>
+                  <option value="2nd Grade">2nd Grade</option>
+                  <option value="3rd Grade">3rd Grade</option>
+                  <option value="4th Grade">4th Grade</option>
                 </select>
               </div>
             </div>
@@ -350,9 +366,10 @@
 
             <button
               type="submit"
-              class="press-lg mt-7 w-full rounded-full border-2 border-ink bg-brand px-6 py-4 font-display text-lg font-bold text-white shadow-hard-lg"
+              data-signup-submit
+              class="press-lg mt-7 w-full rounded-full border-2 border-ink bg-brand px-6 py-4 font-display text-lg font-bold text-white shadow-hard-lg disabled:cursor-not-allowed disabled:opacity-70"
             >
-              Join the Waitlist
+              <span data-signup-submit-label>Join the Waitlist</span>
             </button>
 
             <p class="mt-4 text-center text-xs font-bold text-ink-soft">
@@ -361,7 +378,7 @@
           </form>
 
           <div data-signup-success hidden class="py-6 text-center">
-            <span data-signup-icon class="mx-auto grid h-16 w-16 place-items-center rounded-full border-2 border-ink bg-mint shadow-hard">
+            <span class="mx-auto grid h-16 w-16 place-items-center rounded-full border-2 border-ink bg-mint shadow-hard">
               <svg viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="#FFFDF5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M5 13l4 4L19 7" />
               </svg>
