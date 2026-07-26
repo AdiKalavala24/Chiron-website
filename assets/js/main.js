@@ -457,7 +457,7 @@
         .then(function () {
           document.querySelector("[data-signup-title]").textContent = "You're on the list!";
           document.querySelector("[data-signup-message]").textContent =
-            "We'll email " + value + " as soon as a " + gradeLabel + " spot opens in the beta.";
+            "We'll email you as soon as a " + gradeLabel + " spot opens in testing.";
           signupForm.hidden = true;
           document.querySelector("[data-signup-success]").hidden = false;
         })
