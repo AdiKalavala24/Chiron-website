@@ -186,12 +186,17 @@
     guide.setAttribute("font-size", String(TRACE_MAX));
     var width = guide.getComputedTextLength();
     var size = width > 0 ? Math.min(TRACE_MAX, (TRACE_MAX * TRACE_BOX) / width) : TRACE_MAX;
-    var stroke = Math.max(1, size / 18).toFixed(2);
 
     [guide, trace].forEach(function (el) {
       el.setAttribute("font-size", size.toFixed(1));
-      el.setAttribute("stroke-width", stroke);
     });
+
+    // Approximate the total ink length of the stroked glyphs from their
+    // advance width, so the "pen" travels the ribbon of the actual letters
+    // rather than a fixed distance regardless of what's being traced.
+    var traceLen = Math.max(200, trace.getComputedTextLength() * 3.4);
+    trace.style.strokeDasharray = traceLen.toFixed(0);
+    trace.style.setProperty("--trace-len", traceLen.toFixed(0));
   }
 
   // Web fonts land after first paint and change the measurement.

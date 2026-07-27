@@ -157,19 +157,19 @@ body {
    Component animations
    -------------------------------------------------------------------------- */
 
-/* Letter-tracing stroke on the Writing card. A left-to-right clip wipe works for
-   any target string, unlike a dash offset tuned to one glyph's path length. */
-.trace-fill {
-  animation: trace 3.6s ease-in-out infinite;
+/* Letter-tracing stroke on the Writing card. The dash length is set inline by
+   main.js (scaled to the current text), so this only drives the offset. */
+.trace-draw {
+  animation: handwrite 3.6s ease-in-out infinite;
 }
 
-@keyframes trace {
+@keyframes handwrite {
   0% {
-    clip-path: inset(0 100% 0 0);
+    stroke-dashoffset: var(--trace-len, 600);
   }
-  55%,
+  65%,
   100% {
-    clip-path: inset(0 0 0 0);
+    stroke-dashoffset: 0;
   }
 }
 
@@ -365,7 +365,7 @@ body.modal-open {
     transform: none;
   }
 
-  .trace-fill {
-    clip-path: none;
+  .trace-draw {
+    stroke-dashoffset: 0;
   }
 }
